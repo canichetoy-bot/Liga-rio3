@@ -1,53 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Liga Regional Río Tercero</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
+
+        * {
+            box-sizing: border-box;
         }
 
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #F4F6F3;
+            color: #17251C;
+        }
+
+        /* =========================
+           ENCABEZADO
+        ========================= */
+
         header {
-            background-color: #111827;
+            background-color: #176B3A;
             color: white;
             text-align: center;
             padding: 25px 10px;
+            border-bottom: 5px solid #C9A227;
         }
 
         header h1 {
             margin: 0;
-            font-size: 28px;
+            font-size: 30px;
         }
+
+        header p {
+            margin: 8px 0 0;
+            color: #F5D76E;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           CONTENEDOR
+        ========================= */
 
         .contenedor {
             max-width: 1100px;
             margin: 20px auto;
-            padding: 0 10px;
+            padding: 0 12px;
         }
 
         .seccion {
             background-color: white;
             border-radius: 10px;
             padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-top: 3px solid #C9A227;
         }
 
         h2 {
             margin-top: 0;
-            color: #111827;
+            color: #176B3A;
         }
 
         h3 {
-            color: #333;
+            color: #176B3A;
         }
+
+
+        /* =========================
+           NAVEGACIÓN DE FECHAS
+        ========================= */
+
+        .navegacion-fechas {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .boton {
+            border: none;
+            background-color: #176B3A;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .boton:hover {
+            background-color: #C9A227;
+            color: #17251C;
+        }
+
+        .boton:disabled {
+            background-color: #AEB8B1;
+            color: white;
+            cursor: not-allowed;
+        }
+
+        #numeroFecha {
+            font-size: 22px;
+            font-weight: bold;
+            min-width: 100px;
+            text-align: center;
+            color: #176B3A;
+        }
+
+
+        /* =========================
+           PARTIDOS
+        ========================= */
+
+        .partidos {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .partido {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #DDE4DE;
+            gap: 10px;
+        }
+
+        .partido:last-child {
+            border-bottom: none;
+        }
+
+        .equipo-local {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .equipo-visitante {
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .resultado {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #F4F6F3;
+            border: 1px solid #D8C47A;
+            padding: 7px;
+            border-radius: 6px;
+            color: #176B3A;
+        }
+
+
+        /* =========================
+           TABLA DE POSICIONES
+        ========================= */
 
         .tabla-contenedor {
             overflow-x: auto;
@@ -55,20 +173,21 @@
 
         table {
             width: 100%;
-            border-collapse: collapse;
             min-width: 700px;
+            border-collapse: collapse;
         }
 
         th {
-            background-color: #111827;
+            background-color: #176B3A;
             color: white;
-            padding: 10px;
+            padding: 10px 7px;
             text-align: center;
+            border-bottom: 3px solid #C9A227;
         }
 
         td {
-            padding: 9px;
-            border-bottom: 1px solid #ddd;
+            padding: 9px 7px;
+            border-bottom: 1px solid #DDE4DE;
             text-align: center;
         }
 
@@ -77,154 +196,181 @@
             font-weight: bold;
         }
 
-        tr:hover {
-            background-color: #f5f5f5;
+        tbody tr:hover {
+            background-color: #F4F6F3;
         }
 
-        .puesto {
-            font-weight: bold;
+
+        /* =========================
+           SEGUNDA DIVISIÓN
+        ========================= */
+
+        .proximamente {
+            color: #666;
         }
+
+
+        /* =========================
+           PIE DE PÁGINA
+        ========================= */
 
         footer {
             text-align: center;
-            padding: 20px;
-            color: #666;
+            padding: 25px;
+            color: #176B3A;
+            font-weight: bold;
         }
+
+
+        /* =========================
+           CELULAR
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 23px;
+            }
+
+            .seccion {
+                padding: 14px;
+            }
+
+            .partido {
+                grid-template-columns: 1fr 55px 1fr;
+                font-size: 13px;
+            }
+
+            .resultado {
+                font-size: 15px;
+            }
+
+            .boton {
+                padding: 9px 11px;
+                font-size: 13px;
+            }
+
+            #numeroFecha {
+                font-size: 18px;
+                min-width: 70px;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     ENCABEZADO
+========================= -->
+
 <header>
+
     <h1>🏆 Liga Regional Río Tercero</h1>
+
     <p>Fútbol Regional</p>
+
 </header>
+
+
 
 <div class="contenedor">
 
-    <!-- PRIMERA DIVISIÓN -->
+
+    <!-- =========================
+         PRIMERA DIVISIÓN
+    ========================= -->
+
     <section class="seccion">
 
         <h2>⚽ Primera División</h2>
 
-        <h3>Tabla de posiciones</h3>
+        <h3 id="numeroFecha">
+            Fecha 1
+        </h3>
+
+
+        <div class="navegacion-fechas">
+
+            <button
+                class="boton"
+                id="anterior"
+                onclick="fechaAnterior()">
+
+                ◀ Anterior
+
+            </button>
+
+
+            <button
+                class="boton"
+                id="siguiente"
+                onclick="fechaSiguiente()">
+
+                Siguiente ▶
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="partidos"
+            id="partidos">
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         TABLA
+    ========================= -->
+
+    <section class="seccion">
+
+        <h2>📊 Tabla de posiciones</h2>
 
         <div class="tabla-contenedor">
 
             <table>
 
                 <thead>
+
                     <tr>
+
                         <th>#</th>
+
                         <th>Equipo</th>
+
                         <th>PTS</th>
+
                         <th>PJ</th>
+
                         <th>PG</th>
+
                         <th>PE</th>
+
                         <th>PP</th>
+
                         <th>GF</th>
+
                         <th>GC</th>
+
                         <th>DG</th>
+
                     </tr>
+
                 </thead>
 
-                <tbody>
 
-                    <tr>
-                        <td class="puesto">1</td>
-                        <td>Belgrano Football Club</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">2</td>
-                        <td>Deportivo Huracán</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">3</td>
-                        <td>Club Juventud Agrario</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">4</td>
-                        <td>Atlético Río Tercero</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">5</td>
-                        <td>Sportivo 9 de Julio</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">6</td>
-                        <td>Vecinos Unidos</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">7</td>
-                        <td>Estudiantes (Hernando)</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">8</td>
-                        <td>Deportivo Independiente (Río Tercero)</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">9</td>
-                        <td>Sportivo Belgrano (Almafuerte)</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">10</td>
-                        <td>Atlético Ascasubi</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">11</td>
-                        <td>Club Atlético Talleres</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">12</td>
-                        <td>Recreativo Elenense</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">13</td>
-                        <td>Social de Villa General Belgrano</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">14</td>
-                        <td>Atlético Almafuerte</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">15</td>
-                        <td>Atlético Huracán de Las Isletillas</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
-
-                    <tr>
-                        <td class="puesto">16</td>
-                        <td>Atlético Independiente (Hernando)</td>
-                        <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
-                    </tr>
+                <tbody id="tablaPosiciones">
 
                 </tbody>
 
@@ -235,20 +381,638 @@
     </section>
 
 
-    <!-- SEGUNDA DIVISIÓN -->
+
+    <!-- =========================
+         SEGUNDA DIVISIÓN
+    ========================= -->
+
     <section class="seccion">
 
         <h2>🥈 Segunda División</h2>
 
-        <p>Próximamente tendremos la tabla de posiciones.</p>
+        <p class="proximamente">
+
+            Próximamente tendremos la información
+            de Segunda División.
+
+        </p>
 
     </section>
 
+
 </div>
 
+
+
 <footer>
+
     Liga Regional Río Tercero
+
 </footer>
 
+
+
+<script>
+
+
+/* =========================================================
+   EQUIPOS
+========================================================= */
+
+const equipos = [
+
+    "Belgrano Football Club",
+
+    "Deportivo Huracán (Tancacha)",
+
+    "Juventud Agrario",
+
+    "Atlético Río Tercero",
+
+    "Sportivo 9 de Julio",
+
+    "Vecinos Unidos",
+
+    "Atlético Estudiantes",
+
+    "Deportivo Independiente (Río Tercero)",
+
+    "Sportivo Belgrano (Almafuerte)",
+
+    "Atlético Ascasubi",
+
+    "Talleres (Berrotarán)",
+
+    "Recreativo Elenense",
+
+    "Social y Deportivo Villa General Belgrano",
+
+    "Atlético Almafuerte",
+
+    "Atlético Huracán de Las Isletillas",
+
+    "Atlético Independiente (Hernando)"
+
+];
+
+
+
+/* =========================================================
+   FIXTURE
+========================================================= */
+
+const fechas = [
+
+
+    /* =========================
+       FECHA 1
+    ========================= */
+
+    [
+
+        [
+            "Juventud Agrario",
+            "Belgrano Football Club"
+        ],
+
+        [
+            "Social y Deportivo Villa General Belgrano",
+            "Sportivo Belgrano (Almafuerte)"
+        ],
+
+        [
+            "Atlético Ascasubi",
+            "Deportivo Independiente (Río Tercero)"
+        ],
+
+        [
+            "Sportivo 9 de Julio",
+            "Atlético Independiente (Hernando)"
+        ],
+
+        [
+            "Atlético Estudiantes",
+            "Atlético Río Tercero"
+        ],
+
+        [
+            "Atlético Huracán de Las Isletillas",
+            "Deportivo Huracán (Tancacha)"
+        ],
+
+        [
+            "Vecinos Unidos",
+            "Recreativo Elenense"
+        ],
+
+        [
+            "Talleres (Berrotarán)",
+            "Atlético Almafuerte"
+        ]
+
+    ],
+
+
+
+    /* =========================
+       FECHA 2
+    ========================= */
+
+    [
+
+        [
+            "Juventud Agrario",
+            "Deportivo Independiente (Río Tercero)"
+        ],
+
+        [
+            "Sportivo Belgrano (Almafuerte)",
+            "Atlético Independiente (Hernando)"
+        ],
+
+        [
+            "Belgrano Football Club",
+            "Atlético Río Tercero"
+        ],
+
+        [
+            "Social y Deportivo Villa General Belgrano",
+            "Deportivo Huracán (Tancacha)"
+        ],
+
+        [
+            "Sportivo 9 de Julio",
+            "Talleres (Berrotarán)"
+        ],
+
+        [
+            "Atlético Ascasubi",
+            "Recreativo Elenense"
+        ],
+
+        [
+            "Atlético Estudiantes",
+            "Atlético Almafuerte"
+        ],
+
+        [
+            "Vecinos Unidos",
+            "Atlético Huracán de Las Isletillas"
+        ]
+
+    ],
+
+
+
+    /* =========================
+       FECHA 3
+    ========================= */
+
+    [
+
+        [
+            "Juventud Agrario",
+            "Vecinos Unidos"
+        ],
+
+        [
+            "Atlético Almafuerte",
+            "Atlético Huracán de Las Isletillas"
+        ],
+
+        [
+            "Talleres (Berrotarán)",
+            "Atlético Estudiantes"
+        ],
+
+        [
+            "Recreativo Elenense",
+            "Sportivo 9 de Julio"
+        ],
+
+        [
+            "Deportivo Huracán (Tancacha)",
+            "Atlético Ascasubi"
+        ],
+
+        [
+            "Atlético Río Tercero",
+            "Social y Deportivo Villa General Belgrano"
+        ],
+
+        [
+            "Atlético Independiente (Hernando)",
+            "Belgrano Football Club"
+        ],
+
+        [
+            "Deportivo Independiente (Río Tercero)",
+            "Sportivo Belgrano (Almafuerte)"
+        ]
+
+    ],
+
+
+
+    /* =========================
+       FECHA 4
+    ========================= */
+
+    [
+
+        [
+            "Sportivo Belgrano (Almafuerte)",
+            "Juventud Agrario"
+        ],
+
+        [
+            "Belgrano Football Club",
+            "Deportivo Independiente (Río Tercero)"
+        ],
+
+        [
+            "Social y Deportivo Villa General Belgrano",
+            "Atlético Independiente (Hernando)"
+        ],
+
+        [
+            "Atlético Ascasubi",
+            "Atlético Río Tercero"
+        ],
+
+        [
+            "Sportivo 9 de Julio",
+            "Deportivo Huracán (Tancacha)"
+        ],
+
+        [
+            "Atlético Estudiantes",
+            "Recreativo Elenense"
+        ],
+
+        [
+            "Atlético Huracán de Las Isletillas",
+            "Talleres (Berrotarán)"
+        ],
+
+        [
+            "Vecinos Unidos",
+            "Atlético Almafuerte"
+        ]
+
+    ]
+
+];
+
+
+
+/* =========================================================
+   RESULTADOS
+=========================================================
+
+   null = partido todavía sin resultado.
+
+   Ejemplo:
+
+   [2, 1]
+
+   significa:
+
+   Local 2 - 1 Visitante
+
+========================================================= */
+
+const resultados = [
+
+
+    /* FECHA 1 */
+
+    [
+
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+
+    ],
+
+
+    /* FECHA 2 */
+
+    [
+
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+
+    ],
+
+
+    /* FECHA 3 */
+
+    [
+
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+
+    ],
+
+
+    /* FECHA 4 */
+
+    [
+
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+
+    ]
+
+];
+
+
+
+/* =========================================================
+   FECHA ACTUAL
+========================================================= */
+
+let fechaActual = 0;
+
+
+
+/* =========================================================
+   MOSTRAR FECHA
+========================================================= */
+
+function mostrarFecha() {
+
+
+    const partidos =
+        document.getElementById("partidos");
+
+
+    const numeroFecha =
+        document.getElementById("numeroFecha");
+
+
+    partidos.innerHTML = "";
+
+
+    numeroFecha.textContent =
+        "Fecha " + (fechaActual + 1);
+
+
+
+    fechas[fechaActual].forEach(
+
+        (partido, indice) => {
+
+
+            const local =
+                partido[0];
+
+
+            const visitante =
+                partido[1];
+
+
+            const resultado =
+                resultados[fechaActual][indice];
+
+
+            let marcador = "vs";
+
+
+            if (resultado !== null) {
+
+                marcador =
+                    resultado[0] +
+                    " - " +
+                    resultado[1];
+
+            }
+
+
+
+            const div =
+                document.createElement("div");
+
+
+            div.className =
+                "partido";
+
+
+
+            div.innerHTML = `
+
+                <div class="equipo-local">
+
+                    ${local}
+
+                </div>
+
+
+                <div class="resultado">
+
+                    ${marcador}
+
+                </div>
+
+
+                <div class="equipo-visitante">
+
+                    ${visitante}
+
+                </div>
+
+            `;
+
+
+
+            partidos.appendChild(div);
+
+
+        }
+
+    );
+
+
+    actualizarBotones();
+
+}
+
+
+
+/* =========================================================
+   BOTONES
+========================================================= */
+
+function actualizarBotones() {
+
+
+    document.getElementById("anterior").disabled =
+        fechaActual === 0;
+
+
+    document.getElementById("siguiente").disabled =
+        fechaActual === fechas.length - 1;
+
+}
+
+
+
+function fechaAnterior() {
+
+
+    if (fechaActual > 0) {
+
+        fechaActual--;
+
+        mostrarFecha();
+
+    }
+
+}
+
+
+
+function fechaSiguiente() {
+
+
+    if (fechaActual < fechas.length - 1) {
+
+        fechaActual++;
+
+        mostrarFecha();
+
+    }
+
+}
+
+
+
+/* =========================================================
+   TABLA DE POSICIONES
+========================================================= */
+
+function crearTabla() {
+
+
+    const tabla =
+        document.getElementById("tablaPosiciones");
+
+
+    tabla.innerHTML = "";
+
+
+
+    equipos.forEach(
+
+        (equipo, indice) => {
+
+
+            const fila =
+                document.createElement("tr");
+
+
+
+            fila.innerHTML = `
+
+                <td>
+                    ${indice + 1}
+                </td>
+
+
+                <td>
+                    ${equipo}
+                </td>
+
+
+                <td>
+                    0
+                </td>
+
+
+                <td>
+                    0
+                </td>
+
+
+                <td>
+                    0
+                </td>
+
+
+                <td>
+                    0
+                </td>
+
+
+                <td>
+                    0
+                </td>
+
+
+                <td>
+                    0
+                </td>
+
+
+                <td>
+                    0
+                </td>
+
+
+                <td>
+                    0
+                </td>
+
+            `;
+
+
+
+            tabla.appendChild(fila);
+
+        }
+
+    );
+
+}
+
+
+
+/* =========================================================
+   INICIAR
+========================================================= */
+
+mostrarFecha();
+
+crearTabla();
+
+
+</script>
+
+
 </body>
+
 </html>
