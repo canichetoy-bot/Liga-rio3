@@ -5,63 +5,98 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Liga Regional</title>
 
-<!-- SUPABASE -->
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <style>
+
+/* =====================================================
+   GENERAL
+===================================================== */
 
 * {
     box-sizing: border-box;
 }
 
 body {
+
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background: #f3f4f6;
+
     color: #111827;
 }
 
-/* =========================
+
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 header {
+
     background: #111827;
+
     color: white;
+
     text-align: center;
+
     padding: 25px 10px;
+
 }
 
 header h1 {
+
     margin: 0;
+
     font-size: 30px;
+
 }
 
 header p {
+
     margin: 8px 0 0;
+
     color: #d1d5db;
+
 }
 
-/* =========================
+
+/* =====================================================
    BOTON MENU
-========================= */
+===================================================== */
 
 .menu-btn {
+
     position: fixed;
+
     right: 20px;
+
     top: 20px;
 
     width: 50px;
+
     height: 50px;
 
     border: none;
+
     border-radius: 10px;
 
     background: #2563eb;
+
     color: white;
 
     font-size: 24px;
@@ -69,24 +104,67 @@ header p {
     cursor: pointer;
 
     z-index: 1001;
+
 }
 
 .menu-btn:hover {
+
     background: #1d4ed8;
+
 }
 
-/* =========================
+
+/* =====================================================
+   BOTON LOGIN
+===================================================== */
+
+.btn-login {
+
+    position: fixed;
+
+    right: 20px;
+
+    top: 80px;
+
+    padding: 10px 15px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #374151;
+
+    color: white;
+
+    cursor: pointer;
+
+    z-index: 1001;
+
+    font-weight: bold;
+
+}
+
+.btn-login:hover {
+
+    background: #2563eb;
+
+}
+
+
+/* =====================================================
    MENU LATERAL
-========================= */
+===================================================== */
 
 .menu-lateral {
 
     position: fixed;
 
     top: 0;
+
     right: -300px;
 
     width: 300px;
+
     height: 100vh;
 
     background: #111827;
@@ -99,19 +177,26 @@ header p {
 
     z-index: 1000;
 
-    box-shadow: -5px 0 15px rgba(0,0,0,0.25);
+    box-shadow:
+        -5px 0 15px rgba(0,0,0,0.25);
 
-    overflow-y: auto;
 }
 
 .menu-lateral.abierto {
+
     right: 0;
+
 }
 
 .menu-lateral h2 {
+
     margin-top: 0;
-    border-bottom: 1px solid #374151;
+
+    border-bottom:
+        1px solid #374151;
+
     padding-bottom: 15px;
+
 }
 
 .menu-opcion {
@@ -137,25 +222,25 @@ header p {
     text-align: left;
 
     cursor: pointer;
+
 }
 
 .menu-opcion:hover {
+
     background: #2563eb;
+
 }
 
 .menu-opcion.activo {
+
     background: #2563eb;
+
 }
 
-.menu-separador {
-    border: none;
-    border-top: 1px solid #374151;
-    margin: 20px 0;
-}
 
-/* =========================
+/* =====================================================
    OVERLAY
-========================= */
+===================================================== */
 
 .overlay {
 
@@ -163,20 +248,25 @@ header p {
 
     inset: 0;
 
-    background: rgba(0,0,0,0.4);
+    background:
+        rgba(0,0,0,0.4);
 
     display: none;
 
     z-index: 999;
+
 }
 
 .overlay.visible {
+
     display: block;
+
 }
 
-/* =========================
+
+/* =====================================================
    NAVEGACION
-========================= */
+===================================================== */
 
 nav {
 
@@ -191,6 +281,7 @@ nav {
     padding: 12px;
 
     flex-wrap: wrap;
+
 }
 
 nav button {
@@ -208,17 +299,20 @@ nav button {
     cursor: pointer;
 
     font-weight: bold;
+
 }
 
 nav button:hover,
 nav button.active {
 
     background: #2563eb;
+
 }
 
-/* =========================
+
+/* =====================================================
    CONTENEDOR
-========================= */
+===================================================== */
 
 .container {
 
@@ -227,6 +321,7 @@ nav button.active {
     margin: auto;
 
     padding: 20px;
+
 }
 
 .seccion {
@@ -239,16 +334,21 @@ nav button.active {
 
     margin-bottom: 20px;
 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.08);
+
 }
 
 h2 {
+
     margin-top: 0;
+
 }
 
-/* =========================
+
+/* =====================================================
    CATEGORIA
-========================= */
+===================================================== */
 
 .categoria-actual {
 
@@ -267,14 +367,18 @@ h2 {
     font-weight: bold;
 
     margin-bottom: 15px;
+
 }
 
-/* =========================
+
+/* =====================================================
    TABLA
-========================= */
+===================================================== */
 
 .tabla-container {
+
     overflow-x: auto;
+
 }
 
 table {
@@ -284,6 +388,7 @@ table {
     border-collapse: collapse;
 
     min-width: 650px;
+
 }
 
 th {
@@ -295,15 +400,18 @@ th {
     padding: 10px;
 
     font-size: 14px;
+
 }
 
 td {
 
     padding: 10px;
 
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom:
+        1px solid #e5e7eb;
 
     text-align: center;
+
 }
 
 td:nth-child(2) {
@@ -311,20 +419,25 @@ td:nth-child(2) {
     text-align: left;
 
     font-weight: bold;
+
 }
 
 tr:hover {
 
     background: #f9fafb;
+
 }
 
 .posicion {
+
     font-weight: bold;
+
 }
 
-/* =========================
+
+/* =====================================================
    FECHAS
-========================= */
+===================================================== */
 
 .selector-fecha {
 
@@ -335,6 +448,7 @@ tr:hover {
     flex-wrap: wrap;
 
     margin-bottom: 20px;
+
 }
 
 .selector-fecha button {
@@ -348,6 +462,7 @@ tr:hover {
     border-radius: 6px;
 
     cursor: pointer;
+
 }
 
 .selector-fecha button:hover,
@@ -356,15 +471,18 @@ tr:hover {
     background: #2563eb;
 
     color: white;
+
 }
 
-/* =========================
+
+/* =====================================================
    PARTIDOS
-========================= */
+===================================================== */
 
 .partido {
 
-    border: 1px solid #e5e7eb;
+    border:
+        1px solid #e5e7eb;
 
     border-radius: 8px;
 
@@ -373,6 +491,7 @@ tr:hover {
     margin-bottom: 12px;
 
     background: white;
+
 }
 
 .partido-header {
@@ -384,6 +503,7 @@ tr:hover {
     align-items: center;
 
     margin-bottom: 12px;
+
 }
 
 .estado {
@@ -397,6 +517,7 @@ tr:hover {
     border-radius: 5px;
 
     background: #e5e7eb;
+
 }
 
 .estado.finalizado {
@@ -404,29 +525,38 @@ tr:hover {
     background: #dcfce7;
 
     color: #166534;
+
 }
 
 .equipos {
 
     display: grid;
 
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns:
+        1fr auto 1fr;
 
     align-items: center;
 
     gap: 15px;
+
 }
 
 .equipo {
+
     font-weight: bold;
+
 }
 
 .local {
+
     text-align: right;
+
 }
 
 .visitante {
+
     text-align: left;
+
 }
 
 .resultado {
@@ -436,17 +566,20 @@ tr:hover {
     font-weight: bold;
 
     white-space: nowrap;
+
 }
 
-/* =========================
+
+/* =====================================================
    ADMIN
-========================= */
+===================================================== */
 
 .admin-partido {
 
     display: grid;
 
-    grid-template-columns: 1fr 70px 20px 70px 1fr 80px;
+    grid-template-columns:
+        1fr 70px 20px 70px 1fr 80px;
 
     gap: 8px;
 
@@ -456,7 +589,9 @@ tr:hover {
 
     padding: 10px;
 
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom:
+        1px solid #e5e7eb;
+
 }
 
 .admin-partido input {
@@ -465,11 +600,13 @@ tr:hover {
 
     padding: 8px;
 
-    border: 1px solid #d1d5db;
+    border:
+        1px solid #d1d5db;
 
     border-radius: 5px;
 
     text-align: center;
+
 }
 
 .admin-partido button {
@@ -485,10 +622,15 @@ tr:hover {
     border-radius: 5px;
 
     cursor: pointer;
+
+    font-weight: bold;
+
 }
 
 .admin-partido button:hover {
+
     background: #15803d;
+
 }
 
 .admin-equipo {
@@ -496,132 +638,171 @@ tr:hover {
     font-size: 14px;
 
     font-weight: bold;
+
 }
 
-/* =========================
+
+/* =====================================================
    LOGIN
-========================= */
+===================================================== */
 
-.login-box {
+#loginBox {
 
-    max-width: 450px;
+    display: none;
 
-    margin: 20px auto;
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0,0,0,0.65);
+
+    z-index: 3000;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.login-card {
+
+    background: white;
 
     padding: 25px;
 
-    border: 1px solid #e5e7eb;
+    border-radius: 12px;
 
-    border-radius: 10px;
+    width: 90%;
 
-    background: #f9fafb;
+    max-width: 400px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.3);
+
 }
 
-.login-box input {
+.login-card h2 {
+
+    text-align: center;
+
+}
+
+.login-card input {
 
     width: 100%;
 
     padding: 12px;
 
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 
-    border: 1px solid #d1d5db;
+    border:
+        1px solid #d1d5db;
 
     border-radius: 6px;
 
     font-size: 15px;
+
 }
 
-.login-box button {
+.login-btn {
 
     width: 100%;
 
     padding: 12px;
-
-    border: none;
-
-    border-radius: 6px;
 
     background: #2563eb;
 
     color: white;
 
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-.login-box button:hover {
-    background: #1d4ed8;
-}
-
-.usuario-logueado {
-
-    background: #dcfce7;
-
-    color: #166534;
-
-    padding: 12px;
-
-    border-radius: 7px;
-
-    margin-bottom: 15px;
-
-    font-weight: bold;
-}
-
-.btn-logout {
-
-    background: #dc2626 !important;
-
-    margin-top: 10px;
-}
-
-.mensaje {
-
-    padding: 10px;
+    border: none;
 
     border-radius: 6px;
 
-    margin-bottom: 15px;
+    font-weight: bold;
 
-    display: none;
+    cursor: pointer;
+
 }
 
-.mensaje.error {
+.login-cancelar {
 
-    display: block;
+    width: 100%;
 
-    background: #fee2e2;
+    padding: 10px;
 
-    color: #991b1b;
+    margin-top: 8px;
+
+    background: #e5e7eb;
+
+    color: #111827;
+
+    border: none;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+}
+
+#loginMensaje {
+
+    text-align: center;
+
+    color: #dc2626;
+
+    font-size: 14px;
+
+}
+
+
+/* =====================================================
+   MENSAJES
+===================================================== */
+
+.mensaje {
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    margin-bottom: 15px;
+
+    background: #f3f4f6;
+
 }
 
 .mensaje.exito {
 
-    display: block;
-
     background: #dcfce7;
 
     color: #166534;
+
 }
 
-/* =========================
+
+/* =====================================================
    RESPONSIVE
-========================= */
+===================================================== */
 
 @media (max-width: 700px) {
 
     header h1 {
+
         font-size: 24px;
+
     }
 
     .container {
+
         padding: 10px;
+
     }
 
     .seccion {
+
         padding: 15px;
+
     }
 
     .equipos {
@@ -631,43 +812,55 @@ tr:hover {
         text-align: center;
 
         gap: 8px;
+
     }
 
     .local,
     .visitante {
+
         text-align: center;
+
     }
 
     .admin-partido {
 
         grid-template-columns:
-        1fr 55px 15px 55px;
+            1fr 55px 15px 55px;
+
+    }
+
+    .admin-partido .admin-equipo {
+
+        text-align: center;
+
     }
 
     .admin-partido button {
 
-        grid-column: 1 / -1;
+        grid-column:
+            1 / -1;
 
-    }
-
-    .admin-equipo {
-        text-align: center;
     }
 
     .menu-lateral {
+
         width: 280px;
+
     }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- =====================================================
      BOTON MENU
-========================= -->
+===================================================== -->
 
 <button
     class="menu-btn"
@@ -677,9 +870,24 @@ tr:hover {
 
 </button>
 
-<!-- =========================
+
+<!-- =====================================================
+     BOTON LOGIN
+===================================================== -->
+
+<button
+    id="btnLogin"
+    class="btn-login"
+    onclick="abrirLogin()">
+
+    🔐 Admin
+
+</button>
+
+
+<!-- =====================================================
      OVERLAY
-========================= -->
+===================================================== -->
 
 <div
     id="overlay"
@@ -687,15 +895,17 @@ tr:hover {
     onclick="cerrarMenu()">
 </div>
 
-<!-- =========================
-     MENU
-========================= -->
+
+<!-- =====================================================
+     MENU LATERAL
+===================================================== -->
 
 <div
     id="menuLateral"
     class="menu-lateral">
 
     <h2>🏆 Categoría</h2>
+
 
     <button
         id="btnPrimera"
@@ -706,6 +916,7 @@ tr:hover {
 
     </button>
 
+
     <button
         id="btnReserva"
         class="menu-opcion"
@@ -715,25 +926,70 @@ tr:hover {
 
     </button>
 
-    <hr class="menu-separador">
+</div>
 
-    <button
-        class="menu-opcion"
-        onclick="mostrarSeccion('administracion'); cerrarMenu();">
 
-        🔐 Administración
+<!-- =====================================================
+     LOGIN
+===================================================== -->
 
-    </button>
+<div id="loginBox">
+
+    <div class="login-card">
+
+        <h2>
+            🔐 Administrador
+        </h2>
+
+
+        <input
+            type="email"
+            id="loginEmail"
+            placeholder="Correo electrónico"
+        >
+
+
+        <input
+            type="password"
+            id="loginPassword"
+            placeholder="Contraseña"
+        >
+
+
+        <button
+            class="login-btn"
+            onclick="iniciarSesion()">
+
+            Iniciar sesión
+
+        </button>
+
+
+        <button
+            class="login-cancelar"
+            onclick="cerrarLogin()">
+
+            Cancelar
+
+        </button>
+
+
+        <p id="loginMensaje"></p>
+
+    </div>
 
 </div>
 
-<!-- =========================
+
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header>
 
-    <h1>🏆 Liga Regional</h1>
+    <h1>
+        🏆 Liga Regional
+    </h1>
 
     <p>
         Fixture · Resultados · Tabla de posiciones
@@ -741,9 +997,10 @@ tr:hover {
 
 </header>
 
-<!-- =========================
+
+<!-- =====================================================
      NAVEGACION
-========================= -->
+===================================================== -->
 
 <nav>
 
@@ -755,6 +1012,7 @@ tr:hover {
 
     </button>
 
+
     <button
         onclick="mostrarSeccion('fixture')"
         id="btnFixture">
@@ -763,21 +1021,27 @@ tr:hover {
 
     </button>
 
+
+    <!-- OCULTO HASTA LOGIN -->
+
     <button
         onclick="mostrarSeccion('resultados')"
-        id="btnResultados">
+        id="btnAdmin"
+        style="display:none;">
 
-        ⚽ Resultados
+        🔐 Administración
 
     </button>
 
 </nav>
 
+
 <div class="container">
 
-<!-- =========================
+
+<!-- =====================================================
      TABLA
-========================= -->
+===================================================== -->
 
 <section
     id="tabla"
@@ -791,9 +1055,11 @@ tr:hover {
 
     </div>
 
+
     <h2>
         📊 Tabla de posiciones
     </h2>
+
 
     <div class="tabla-container">
 
@@ -804,21 +1070,32 @@ tr:hover {
                 <tr>
 
                     <th>Pos</th>
+
                     <th>Equipo</th>
+
                     <th>Pts</th>
+
                     <th>PJ</th>
+
                     <th>PG</th>
+
                     <th>PE</th>
+
                     <th>PP</th>
+
                     <th>GF</th>
+
                     <th>GC</th>
+
                     <th>DG</th>
 
                 </tr>
 
             </thead>
 
-            <tbody id="tablaPosiciones">
+
+            <tbody
+                id="tablaPosiciones">
 
             </tbody>
 
@@ -828,9 +1105,10 @@ tr:hover {
 
 </section>
 
-<!-- =========================
+
+<!-- =====================================================
      FIXTURE
-========================= -->
+===================================================== -->
 
 <section
     id="fixture"
@@ -845,24 +1123,30 @@ tr:hover {
 
     </div>
 
+
     <h2>
         📅 Fixture
     </h2>
 
+
     <div
         id="selectorFechas"
         class="selector-fecha">
+
     </div>
+
 
     <div
         id="partidos">
+
     </div>
 
 </section>
 
-<!-- =========================
-     RESULTADOS
-========================= -->
+
+<!-- =====================================================
+     ADMINISTRACION
+===================================================== -->
 
 <section
     id="resultados"
@@ -877,136 +1161,68 @@ tr:hover {
 
     </div>
 
+
     <h2>
-        ⚽ Resultados
+        🔐 Administración
     </h2>
+
+
+    <div
+        id="usuarioLogueado"
+        class="mensaje">
+
+    </div>
+
 
     <p>
-        Resultados de los partidos.
+        Seleccioná una fecha y cargá los resultados.
     </p>
 
+
+    <select
+        id="fechaAdmin"
+        onchange="mostrarAdmin()">
+
+    </select>
+
+
     <div
-        id="resultadosPartidos">
+        id="adminPartidos"
+        style="margin-top:20px;">
+
     </div>
 
 </section>
 
-<!-- =========================
-     ADMINISTRACION
-========================= -->
-
-<section
-    id="administracion"
-    class="seccion"
-    style="display:none;">
-
-    <div class="categoria-actual">
-        Administración
-    </div>
-
-    <h2>
-        🔐 Panel de administrador
-    </h2>
-
-    <!-- LOGIN -->
-
-    <div
-        id="loginContainer"
-        class="login-box">
-
-        <h3>
-            Iniciar sesión
-        </h3>
-
-        <p>
-            Ingresá con tu cuenta de administrador.
-        </p>
-
-        <div
-            id="mensajeLogin"
-            class="mensaje">
-        </div>
-
-        <input
-            type="email"
-            id="emailLogin"
-            placeholder="Correo electrónico">
-
-        <input
-            type="password"
-            id="passwordLogin"
-            placeholder="Contraseña">
-
-        <button onclick="iniciarSesion()">
-            🔐 Iniciar sesión
-        </button>
-
-    </div>
-
-    <!-- ADMIN LOGUEADO -->
-
-    <div
-        id="adminContainer"
-        style="display:none;">
-
-        <div
-            id="usuarioLogueado"
-            class="usuario-logueado">
-        </div>
-
-        <button
-            class="menu-opcion btn-logout"
-            onclick="cerrarSesion()">
-
-            🚪 Cerrar sesión
-
-        </button>
-
-        <hr>
-
-        <h3>
-            ⚽ Cargar resultados
-        </h3>
-
-        <select
-            id="fechaAdmin"
-            onchange="mostrarAdmin()">
-
-        </select>
-
-        <div
-            id="adminPartidos"
-            style="margin-top:20px;">
-        </div>
-
-    </div>
-
-</section>
 
 </div>
 
+
 <script>
 
-/* =========================================================
+
+/* =====================================================
    SUPABASE
-========================================================= */
+===================================================== */
 
 const SUPABASE_URL =
     "https://vxncfnsysnrrewhbbxsc.supabase.co";
 
-const SUPABASE_KEY =
-    "sb_publishable_UPVv4BOH2_VrgyLLf2xMNQ_2t1Ki6Bd";
+
+const SUPABASE_ANON_KEY =
+    "sb_publishable_UPVv4BOH2_VrgyLLF2xMNQ_2t1Ki6Bd";
+
 
 const supabaseClient =
-    window.supabase.createClient(
+    supabase.createClient(
         SUPABASE_URL,
-        SUPABASE_KEY
+        SUPABASE_ANON_KEY
     );
 
 
-/* =========================================================
+/* =====================================================
    EQUIPOS
-========================================================= */
+===================================================== */
 
 const equipos = [
 
@@ -1030,9 +1246,9 @@ const equipos = [
 ];
 
 
-/* =========================================================
+/* =====================================================
    FIXTURE
-========================================================= */
+===================================================== */
 
 const fixture = {
 
@@ -1215,78 +1431,38 @@ const fixture = {
 };
 
 
-/* =========================================================
-   VARIABLES
-========================================================= */
+/* =====================================================
+   CATEGORIA
+===================================================== */
 
 let categoriaActual = "primera";
 
 let fechaActual = 1;
 
-let usuarioActual = null;
+let resultadosActuales = {};
 
 
-/* =========================================================
-   OBTENER PARTIDOS DE SUPABASE
-========================================================= */
+/* =====================================================
+   NOMBRE CATEGORIA
+===================================================== */
 
-async function obtenerPartidos(fecha) {
+function nombreCategoria() {
 
-    const { data, error } = await supabaseClient
-        .from("partidos")
-        .select("*")
-        .eq("fecha", fecha)
-        .ilike("categoria", categoriaActual);
-
-    if (error) {
-
-        console.error(error);
-
-        alert(
-            "Error obteniendo partidos: " +
-            error.message
-        );
-
-        return [];
-
-    }
-
-    return data || [];
+    return categoriaActual === "primera"
+        ? "Primera"
+        : "Reserva";
 
 }
 
 
-/* =========================================================
-   OBTENER TODOS LOS PARTIDOS DE LA CATEGORIA
-========================================================= */
-
-async function obtenerTodosLosPartidos() {
-
-    const { data, error } = await supabaseClient
-        .from("partidos")
-        .select("*")
-        .ilike("categoria", categoriaActual);
-
-    if (error) {
-
-        console.error(error);
-
-        return [];
-
-    }
-
-    return data || [];
-
-}
-
-
-/* =========================================================
+/* =====================================================
    CAMBIAR CATEGORIA
-========================================================= */
+===================================================== */
 
 async function cambiarCategoria(categoria) {
 
     categoriaActual = categoria;
+
 
     document
         .getElementById("btnPrimera")
@@ -1313,39 +1489,41 @@ async function cambiarCategoria(categoria) {
 
 
     const nombre =
-        categoria === "primera"
-            ? "Primera"
-            : "Reserva";
+        nombreCategoria();
 
 
-    document.getElementById("categoriaTabla")
-        .textContent = nombre;
-
-    document.getElementById("categoriaFixture")
-        .textContent = nombre;
-
-    document.getElementById("categoriaResultados")
+    document
+        .getElementById("categoriaTabla")
         .textContent = nombre;
 
 
-    await mostrarFecha(fechaActual);
+    document
+        .getElementById("categoriaFixture")
+        .textContent = nombre;
 
-    await mostrarResultados();
 
-    await actualizarTabla();
+    document
+        .getElementById("categoriaResultados")
+        .textContent = nombre;
 
-    if (usuarioActual) {
-        await mostrarAdmin();
-    }
 
     cerrarMenu();
+
+
+    await cargarResultados();
+
+    mostrarFecha(fechaActual);
+
+    mostrarAdmin();
+
+    actualizarTabla();
 
 }
 
 
-/* =========================================================
+/* =====================================================
    MENU
-========================================================= */
+===================================================== */
 
 function toggleMenu() {
 
@@ -1373,29 +1551,70 @@ function cerrarMenu() {
 }
 
 
-/* =========================================================
+/* =====================================================
    SECCIONES
-========================================================= */
+===================================================== */
 
 function mostrarSeccion(seccion) {
 
-    document.getElementById("tabla").style.display = "none";
-
-    document.getElementById("fixture").style.display = "none";
-
-    document.getElementById("resultados").style.display = "none";
-
-    document.getElementById("administracion").style.display = "none";
-
-
-    document.getElementById(seccion).style.display = "block";
+    document
+        .getElementById("tabla")
+        .style.display = "none";
 
 
     document
-        .querySelectorAll("nav button")
-        .forEach(boton =>
-            boton.classList.remove("active")
-        );
+        .getElementById("fixture")
+        .style.display = "none";
+
+
+    document
+        .getElementById("resultados")
+        .style.display = "none";
+
+
+    /*
+       Seguridad adicional:
+       si alguien intenta abrir administración
+       sin estar logueado, no se lo permitimos.
+    */
+
+    if (seccion === "resultados") {
+
+        const btnAdmin =
+            document.getElementById("btnAdmin");
+
+
+        if (
+            btnAdmin.style.display === "none"
+        ) {
+
+            abrirLogin();
+
+            return;
+
+        }
+
+    }
+
+
+    document
+        .getElementById(seccion)
+        .style.display = "block";
+
+
+    document
+        .getElementById("btnTabla")
+        .classList.remove("active");
+
+
+    document
+        .getElementById("btnFixture")
+        .classList.remove("active");
+
+
+    document
+        .getElementById("btnAdmin")
+        .classList.remove("active");
 
 
     if (seccion === "tabla") {
@@ -1406,6 +1625,7 @@ function mostrarSeccion(seccion) {
 
     }
 
+
     if (seccion === "fixture") {
 
         document
@@ -1414,10 +1634,11 @@ function mostrarSeccion(seccion) {
 
     }
 
+
     if (seccion === "resultados") {
 
         document
-            .getElementById("btnResultados")
+            .getElementById("btnAdmin")
             .classList.add("active");
 
     }
@@ -1425,131 +1646,256 @@ function mostrarSeccion(seccion) {
 }
 
 
-/* =========================================================
-   SELECTOR FECHAS
-========================================================= */
+/* =====================================================
+   CARGAR RESULTADOS DESDE SUPABASE
+===================================================== */
+
+async function cargarResultados() {
+
+    resultadosActuales = {};
+
+
+    const {
+        data,
+        error
+    } = await supabaseClient
+
+        .from("partidos")
+
+        .select("*")
+
+        .eq(
+            "categoria",
+            nombreCategoria()
+        );
+
+
+    if (error) {
+
+        console.error(
+            "Error cargando resultados:",
+            error
+        );
+
+        return;
+
+    }
+
+
+    data.forEach(partido => {
+
+        /*
+           Usamos el número de partido
+           según la fecha y posición.
+        */
+
+        const partidosFecha =
+            fixture[partido.fecha];
+
+
+        if (!partidosFecha) return;
+
+
+        const indice =
+            partidosFecha.findIndex(
+                p =>
+                    p[0] === partido.local &&
+                    p[1] === partido.visitante
+            );
+
+
+        if (indice === -1) return;
+
+
+        const id =
+            partido.fecha + "-" + indice;
+
+
+        resultadosActuales[id] = {
+
+            id: partido.id,
+
+            golesLocal:
+                partido.goles_local,
+
+            golesVisitante:
+                partido.goles_visitante,
+
+            estado:
+                partido.estado
+
+        };
+
+    });
+
+}
+
+
+/* =====================================================
+   CREAR SELECTOR DE FECHAS
+===================================================== */
 
 function crearSelectorFechas() {
 
     const contenedor =
-        document.getElementById("selectorFechas");
+        document.getElementById(
+            "selectorFechas"
+        );
+
 
     contenedor.innerHTML = "";
 
 
-    for (let fecha = 1; fecha <= 16; fecha++) {
+    for (
+        let fecha = 1;
+        fecha <= 16;
+        fecha++
+    ) {
 
         const boton =
-            document.createElement("button");
+            document.createElement(
+                "button"
+            );
+
 
         boton.textContent =
             "Fecha " + fecha;
 
-        boton.onclick = function() {
 
-            mostrarFecha(fecha);
+        boton.onclick =
+            function() {
 
-        };
+                mostrarFecha(fecha);
+
+            };
 
 
         if (fecha === 1) {
 
-            boton.classList.add("active");
+            boton.classList.add(
+                "active"
+            );
 
         }
 
 
-        contenedor.appendChild(boton);
+        contenedor.appendChild(
+            boton
+        );
 
     }
 
 }
 
 
-/* =========================================================
+/* =====================================================
    MOSTRAR FECHA
-========================================================= */
+===================================================== */
 
-async function mostrarFecha(fecha) {
+function mostrarFecha(fecha) {
 
     fechaActual = fecha;
 
+
     const contenedor =
-        document.getElementById("partidos");
-
-    contenedor.innerHTML =
-        "<p>⏳ Cargando partidos...</p>";
-
-
-    document
-        .querySelectorAll("#selectorFechas button")
-        .forEach(boton =>
-            boton.classList.remove("active")
+        document.getElementById(
+            "partidos"
         );
-
-
-    const botonFecha =
-        document.querySelectorAll(
-            "#selectorFechas button"
-        )[fecha - 1];
-
-
-    if (botonFecha) {
-        botonFecha.classList.add("active");
-    }
-
-
-    const partidosBD =
-        await obtenerPartidos(fecha);
 
 
     contenedor.innerHTML = "";
 
 
-    fixture[fecha].forEach(
+    document
+        .querySelectorAll(
+            "#selectorFechas button"
+        )
+        .forEach(
+            boton =>
+                boton.classList.remove(
+                    "active"
+                )
+        );
+
+
+    const botonActivo =
+        document.querySelectorAll(
+            "#selectorFechas button"
+        )[fecha - 1];
+
+
+    if (botonActivo) {
+
+        botonActivo.classList.add(
+            "active"
+        );
+
+    }
+
+
+    const partidos =
+        fixture[fecha];
+
+
+    if (!partidos) return;
+
+
+    partidos.forEach(
         (partido, indice) => {
 
-            const local = partido[0];
+            const local =
+                partido[0];
 
-            const visitante = partido[1];
+            const visitante =
+                partido[1];
 
 
-            const resultadoBD =
-                partidosBD.find(p =>
-                    p.local === local &&
-                    p.visitante === visitante
-                );
+            const id =
+                fecha + "-" + indice;
+
+
+            const resultado =
+                resultadosActuales[id];
 
 
             let marcador = "-";
 
-            let estado = "Pendiente";
+            let estado =
+                "Pendiente";
 
             let claseEstado = "";
 
 
             if (
-                resultadoBD &&
-                resultadoBD.goles_local !== null &&
-                resultadoBD.goles_visitante !== null
+                resultado &&
+                resultado.golesLocal !== null &&
+                resultado.golesVisitante !== null
             ) {
 
                 marcador =
-                    resultadoBD.goles_local +
+                    resultado.golesLocal +
                     " - " +
-                    resultadoBD.goles_visitante;
+                    resultado.golesVisitante;
 
-                estado = "Finalizado";
 
-                claseEstado = "finalizado";
+                estado =
+                    "Finalizado";
+
+
+                claseEstado =
+                    "finalizado";
 
             }
 
 
             const div =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
-            div.className = "partido";
+
+            div.className =
+                "partido";
 
 
             div.innerHTML = `
@@ -1560,11 +1906,13 @@ async function mostrarFecha(fecha) {
                         Partido ${indice + 1}
                     </strong>
 
-                    <span class="estado ${claseEstado}">
+                    <span
+                        class="estado ${claseEstado}">
                         ${estado}
                     </span>
 
                 </div>
+
 
                 <div class="equipos">
 
@@ -1572,9 +1920,11 @@ async function mostrarFecha(fecha) {
                         ${local}
                     </div>
 
+
                     <div class="resultado">
                         ${marcador}
                     </div>
+
 
                     <div class="equipo visitante">
                         ${visitante}
@@ -1585,7 +1935,9 @@ async function mostrarFecha(fecha) {
             `;
 
 
-            contenedor.appendChild(div);
+            contenedor.appendChild(
+                div
+            );
 
         }
     );
@@ -1593,157 +1945,67 @@ async function mostrarFecha(fecha) {
 }
 
 
-/* =========================================================
-   MOSTRAR RESULTADOS
-========================================================= */
-
-async function mostrarResultados() {
-
-    const contenedor =
-        document.getElementById("resultadosPartidos");
-
-    contenedor.innerHTML =
-        "<p>⏳ Cargando resultados...</p>";
-
-
-    const partidos =
-        await obtenerTodosLosPartidos();
-
-
-    contenedor.innerHTML = "";
-
-
-    for (let fecha = 1; fecha <= 16; fecha++) {
-
-        const partidosFecha =
-            partidos.filter(p =>
-                Number(p.fecha) === fecha
-            );
-
-
-        const tieneResultados =
-            partidosFecha.some(p =>
-                p.goles_local !== null &&
-                p.goles_visitante !== null
-            );
-
-
-        if (!tieneResultados) {
-            continue;
-        }
-
-
-        const titulo =
-            document.createElement("h3");
-
-        titulo.textContent =
-            "📅 Fecha " + fecha;
-
-        contenedor.appendChild(titulo);
-
-
-        partidosFecha.forEach(p => {
-
-            if (
-                p.goles_local === null ||
-                p.goles_visitante === null
-            ) {
-                return;
-            }
-
-
-            const div =
-                document.createElement("div");
-
-            div.className = "partido";
-
-
-            div.innerHTML = `
-
-                <div class="equipos">
-
-                    <div class="equipo local">
-                        ${p.local}
-                    </div>
-
-                    <div class="resultado">
-                        ${p.goles_local}
-                        -
-                        ${p.goles_visitante}
-                    </div>
-
-                    <div class="equipo visitante">
-                        ${p.visitante}
-                    </div>
-
-                </div>
-
-            `;
-
-
-            contenedor.appendChild(div);
-
-        });
-
-    }
-
-
-    if (contenedor.innerHTML === "") {
-
-        contenedor.innerHTML =
-            "<p>Todavía no hay resultados cargados.</p>";
-
-    }
-
-}
-
-
-/* =========================================================
+/* =====================================================
    SELECTOR ADMIN
-========================================================= */
+===================================================== */
 
 function crearSelectorAdmin() {
 
     const select =
-        document.getElementById("fechaAdmin");
+        document.getElementById(
+            "fechaAdmin"
+        );
+
 
     select.innerHTML = "";
 
 
-    for (let fecha = 1; fecha <= 16; fecha++) {
+    for (
+        let fecha = 1;
+        fecha <= 16;
+        fecha++
+    ) {
 
         const option =
-            document.createElement("option");
+            document.createElement(
+                "option"
+            );
 
-        option.value = fecha;
+
+        option.value =
+            fecha;
+
 
         option.textContent =
             "Fecha " + fecha;
 
-        select.appendChild(option);
+
+        select.appendChild(
+            option
+        );
 
     }
 
 }
 
 
-/* =========================================================
+/* =====================================================
    MOSTRAR ADMIN
-========================================================= */
+===================================================== */
 
-async function mostrarAdmin() {
+function mostrarAdmin() {
 
-    if (!usuarioActual) {
-        return;
-    }
+    const select =
+        document.getElementById(
+            "fechaAdmin"
+        );
+
+
+    if (!select) return;
 
 
     const fecha =
-        Number(
-            document.getElementById(
-                "fechaAdmin"
-            ).value
-        );
+        Number(select.value);
 
 
     const contenedor =
@@ -1752,18 +2014,17 @@ async function mostrarAdmin() {
         );
 
 
-    contenedor.innerHTML =
-        "<p>⏳ Cargando...</p>";
-
-
-    const partidosBD =
-        await obtenerPartidos(fecha);
-
-
     contenedor.innerHTML = "";
 
 
-    fixture[fecha].forEach(
+    const partidos =
+        fixture[fecha];
+
+
+    if (!partidos) return;
+
+
+    partidos.forEach(
         (partido, indice) => {
 
             const local =
@@ -1773,29 +2034,20 @@ async function mostrarAdmin() {
                 partido[1];
 
 
-            const partidoBD =
-                partidosBD.find(p =>
-                    p.local === local &&
-                    p.visitante === visitante
-                );
+            const id =
+                fecha + "-" + indice;
 
 
-            const golesLocal =
-                partidoBD &&
-                partidoBD.goles_local !== null
-                    ? partidoBD.goles_local
-                    : "";
-
-
-            const golesVisitante =
-                partidoBD &&
-                partidoBD.goles_visitante !== null
-                    ? partidoBD.goles_visitante
-                    : "";
+            const resultado =
+                resultadosActuales[id] ||
+                {};
 
 
             const div =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
+
 
             div.className =
                 "admin-partido";
@@ -1807,33 +2059,46 @@ async function mostrarAdmin() {
                     ${local}
                 </div>
 
+
                 <input
                     type="number"
                     min="0"
-                    id="local-${fecha}-${indice}"
-                    value="${golesLocal}"
+                    id="local-${id}"
+                    value="${
+                        resultado.golesLocal ??
+                        ""
+                    }"
                     placeholder="0"
                 >
+
 
                 <strong>-</strong>
 
+
                 <input
                     type="number"
                     min="0"
-                    id="visitante-${fecha}-${indice}"
-                    value="${golesVisitante}"
+                    id="visitante-${id}"
+                    value="${
+                        resultado.golesVisitante ??
+                        ""
+                    }"
                     placeholder="0"
                 >
+
 
                 <div class="admin-equipo">
                     ${visitante}
                 </div>
 
+
                 <button
-                    onclick="guardarResultado(
-                        ${fecha},
-                        ${indice}
-                    )">
+                    onclick="
+                        guardarResultado(
+                            ${fecha},
+                            ${indice}
+                        )
+                    ">
 
                     Guardar
 
@@ -1842,7 +2107,9 @@ async function mostrarAdmin() {
             `;
 
 
-            contenedor.appendChild(div);
+            contenedor.appendChild(
+                div
+            );
 
         }
     );
@@ -1850,43 +2117,65 @@ async function mostrarAdmin() {
 }
 
 
-/* =========================================================
-   GUARDAR RESULTADO EN SUPABASE
-========================================================= */
+/* =====================================================
+   GUARDAR RESULTADO
+===================================================== */
 
 async function guardarResultado(
     fecha,
     indice
 ) {
 
-    if (!usuarioActual) {
+
+    /*
+       Comprobar sesión
+    */
+
+    const {
+        data: {
+            session
+        }
+    } =
+        await supabaseClient
+            .auth
+            .getSession();
+
+
+    if (!session) {
 
         alert(
-            "Tenés que iniciar sesión."
+            "Necesitás iniciar sesión."
         );
+
+        abrirLogin();
 
         return;
 
     }
 
 
-    const local =
-        fixture[fecha][indice][0];
+    const id =
+        fecha + "-" + indice;
 
-    const visitante =
-        fixture[fecha][indice][1];
+
+    const inputLocal =
+        document.getElementById(
+            "local-" + id
+        );
+
+
+    const inputVisitante =
+        document.getElementById(
+            "visitante-" + id
+        );
 
 
     const golesLocal =
-        document.getElementById(
-            `local-${fecha}-${indice}`
-        ).value;
+        inputLocal.value;
 
 
     const golesVisitante =
-        document.getElementById(
-            `visitante-${fecha}-${indice}`
-        ).value;
+        inputVisitante.value;
 
 
     if (
@@ -1903,62 +2192,123 @@ async function guardarResultado(
     }
 
 
-    const partidoBD =
-        await obtenerPartidoExacto(
-            fecha,
-            local,
-            visitante
-        );
+    const partido =
+        fixture[fecha][indice];
 
 
-    if (!partidoBD) {
+    const local =
+        partido[0];
 
-        alert(
-            "No se encontró este partido en Supabase."
-        );
+    const visitante =
+        partido[1];
 
-        console.error(
-            "Partido no encontrado:",
-            fecha,
-            categoriaActual,
-            local,
-            visitante
-        );
 
-        return;
+    /*
+       Comprobar si ya existe
+    */
+
+    const resultadoAnterior =
+        resultadosActuales[id];
+
+
+    let response;
+
+
+    if (
+        resultadoAnterior &&
+        resultadoAnterior.id
+    ) {
+
+        /*
+           ACTUALIZAR
+        */
+
+        response =
+            await supabaseClient
+
+                .from("partidos")
+
+                .update({
+
+                    goles_local:
+                        Number(
+                            golesLocal
+                        ),
+
+                    goles_visitante:
+                        Number(
+                            golesVisitante
+                        ),
+
+                    estado:
+                        "Finalizado",
+
+                    updated_at:
+                        new Date()
+                            .toISOString()
+
+                })
+
+                .eq(
+                    "id",
+                    resultadoAnterior.id
+                );
+
+    } else {
+
+        /*
+           CREAR
+        */
+
+        response =
+            await supabaseClient
+
+                .from("partidos")
+
+                .insert({
+
+                    fecha:
+                        fecha,
+
+                    categoria:
+                        nombreCategoria(),
+
+                    local:
+                        local,
+
+                    visitante:
+                        visitante,
+
+                    goles_local:
+                        Number(
+                            golesLocal
+                        ),
+
+                    goles_visitante:
+                        Number(
+                            golesVisitante
+                        ),
+
+                    estado:
+                        "Finalizado"
+
+                });
 
     }
 
 
-    const { error } =
-        await supabaseClient
-            .from("partidos")
-            .update({
+    if (response.error) {
 
-                goles_local:
-                    Number(golesLocal),
+        console.error(
+            response.error
+        );
 
-                goles_visitante:
-                    Number(golesVisitante),
-
-                estado:
-                    "finalizado",
-
-                updated_at:
-                    new Date().toISOString()
-
-            })
-            .eq("id", partidoBD.id);
-
-
-    if (error) {
-
-        console.error(error);
 
         alert(
-            "Error guardando resultado:\n\n" +
-            error.message
+            "No se pudo guardar el resultado.\n\n" +
+            response.error.message
         );
+
 
         return;
 
@@ -1970,219 +2320,199 @@ async function guardarResultado(
     );
 
 
-    await mostrarAdmin();
+    /*
+       Volver a cargar desde Supabase
+    */
 
-    await mostrarFecha(fecha);
-
-    await mostrarResultados();
-
-    await actualizarTabla();
-
-}
+    await cargarResultados();
 
 
-/* =========================================================
-   BUSCAR PARTIDO EXACTO
-========================================================= */
+    mostrarAdmin();
 
-async function obtenerPartidoExacto(
-    fecha,
-    local,
-    visitante
-) {
+    mostrarFecha(fecha);
 
-    const { data, error } =
-        await supabaseClient
-            .from("partidos")
-            .select("*")
-            .eq("fecha", fecha)
-            .ilike(
-                "categoria",
-                categoriaActual
-            )
-            .eq("local", local)
-            .eq("visitante", visitante)
-            .limit(1);
-
-
-    if (error) {
-
-        console.error(error);
-
-        return null;
-
-    }
-
-
-    if (!data || data.length === 0) {
-
-        return null;
-
-    }
-
-
-    return data[0];
+    actualizarTabla();
 
 }
 
 
-/* =========================================================
+/* =====================================================
    TABLA DE POSICIONES
-========================================================= */
+===================================================== */
 
-async function actualizarTabla() {
+function actualizarTabla() {
 
-    const partidos =
-        await obtenerTodosLosPartidos();
-
-
-    let tabla = {};
+    const tabla = {};
 
 
-    equipos.forEach(equipo => {
+    equipos.forEach(
+        equipo => {
 
-        tabla[equipo] = {
+            tabla[equipo] = {
 
-            equipo: equipo,
+                equipo:
+                    equipo,
 
-            pts: 0,
+                pts: 0,
 
-            pj: 0,
+                pj: 0,
 
-            pg: 0,
+                pg: 0,
 
-            pe: 0,
+                pe: 0,
 
-            pp: 0,
+                pp: 0,
 
-            gf: 0,
+                gf: 0,
 
-            gc: 0,
+                gc: 0,
 
-            dg: 0
+                dg: 0
 
-        };
-
-    });
-
-
-    partidos.forEach(partido => {
-
-        if (
-            partido.goles_local === null ||
-            partido.goles_visitante === null
-        ) {
-
-            return;
+            };
 
         }
+    );
 
 
-        const local =
-            partido.local;
+    Object.keys(
+        resultadosActuales
+    ).forEach(
+        id => {
 
-        const visitante =
-            partido.visitante;
-
-
-        const golesLocal =
-            Number(
-                partido.goles_local
-            );
+            const partes =
+                id.split("-");
 
 
-        const golesVisitante =
-            Number(
-                partido.goles_visitante
-            );
+            const fecha =
+                Number(partes[0]);
 
 
-        if (
-            !tabla[local] ||
-            !tabla[visitante]
-        ) {
+            const indice =
+                Number(partes[1]);
 
-            return;
+
+            const partido =
+                fixture[fecha][indice];
+
+
+            if (!partido) return;
+
+
+            const local =
+                partido[0];
+
+            const visitante =
+                partido[1];
+
+
+            const resultado =
+                resultadosActuales[id];
+
+
+            if (
+                resultado.golesLocal === null ||
+                resultado.golesVisitante === null
+            ) {
+
+                return;
+
+            }
+
+
+            const golesLocal =
+                Number(
+                    resultado.golesLocal
+                );
+
+
+            const golesVisitante =
+                Number(
+                    resultado.golesVisitante
+                );
+
+
+            tabla[local].pj++;
+
+            tabla[visitante].pj++;
+
+
+            tabla[local].gf +=
+                golesLocal;
+
+            tabla[local].gc +=
+                golesVisitante;
+
+
+            tabla[visitante].gf +=
+                golesVisitante;
+
+            tabla[visitante].gc +=
+                golesLocal;
+
+
+            if (
+                golesLocal >
+                golesVisitante
+            ) {
+
+                tabla[local].pg++;
+
+                tabla[local].pts += 3;
+
+                tabla[visitante].pp++;
+
+            }
+
+            else if (
+                golesLocal <
+                golesVisitante
+            ) {
+
+                tabla[visitante].pg++;
+
+                tabla[visitante].pts += 3;
+
+                tabla[local].pp++;
+
+            }
+
+            else {
+
+                tabla[local].pe++;
+
+                tabla[visitante].pe++;
+
+                tabla[local].pts++;
+
+                tabla[visitante].pts++;
+
+            }
 
         }
-
-
-        tabla[local].pj++;
-
-        tabla[visitante].pj++;
-
-
-        tabla[local].gf +=
-            golesLocal;
-
-        tabla[local].gc +=
-            golesVisitante;
-
-
-        tabla[visitante].gf +=
-            golesVisitante;
-
-        tabla[visitante].gc +=
-            golesLocal;
-
-
-        if (
-            golesLocal >
-            golesVisitante
-        ) {
-
-            tabla[local].pg++;
-
-            tabla[local].pts += 3;
-
-            tabla[visitante].pp++;
-
-        }
-
-        else if (
-            golesLocal <
-            golesVisitante
-        ) {
-
-            tabla[visitante].pg++;
-
-            tabla[visitante].pts += 3;
-
-            tabla[local].pp++;
-
-        }
-
-        else {
-
-            tabla[local].pe++;
-
-            tabla[visitante].pe++;
-
-            tabla[local].pts++;
-
-            tabla[visitante].pts++;
-
-        }
-
-    });
+    );
 
 
     Object.values(tabla)
-        .forEach(equipo => {
+        .forEach(
+            equipo => {
 
-            equipo.dg =
-                equipo.gf -
-                equipo.gc;
+                equipo.dg =
+                    equipo.gf -
+                    equipo.gc;
 
-        });
+            }
+        );
 
 
     const posiciones =
         Object.values(tabla)
-            .sort((a,b) => {
+        .sort(
+            (a,b) => {
 
                 if (
-                    b.pts !== a.pts
+                    b.pts !==
+                    a.pts
                 ) {
 
                     return b.pts -
@@ -2192,7 +2522,8 @@ async function actualizarTabla() {
 
 
                 if (
-                    b.dg !== a.dg
+                    b.dg !==
+                    a.dg
                 ) {
 
                     return b.dg -
@@ -2202,7 +2533,8 @@ async function actualizarTabla() {
 
 
                 if (
-                    b.gf !== a.gf
+                    b.gf !==
+                    a.gf
                 ) {
 
                     return b.gf -
@@ -2211,11 +2543,13 @@ async function actualizarTabla() {
                 }
 
 
-                return a.equipo.localeCompare(
-                    b.equipo
-                );
+                return a.equipo
+                    .localeCompare(
+                        b.equipo
+                    );
 
-            });
+            }
+        );
 
 
     const tbody =
@@ -2231,7 +2565,9 @@ async function actualizarTabla() {
         (equipo, indice) => {
 
             const tr =
-                document.createElement("tr");
+                document.createElement(
+                    "tr"
+                );
 
 
             tr.innerHTML = `
@@ -2250,24 +2586,40 @@ async function actualizarTabla() {
                     </strong>
                 </td>
 
-                <td>${equipo.pj}</td>
+                <td>
+                    ${equipo.pj}
+                </td>
 
-                <td>${equipo.pg}</td>
+                <td>
+                    ${equipo.pg}
+                </td>
 
-                <td>${equipo.pe}</td>
+                <td>
+                    ${equipo.pe}
+                </td>
 
-                <td>${equipo.pp}</td>
+                <td>
+                    ${equipo.pp}
+                </td>
 
-                <td>${equipo.gf}</td>
+                <td>
+                    ${equipo.gf}
+                </td>
 
-                <td>${equipo.gc}</td>
+                <td>
+                    ${equipo.gc}
+                </td>
 
-                <td>${equipo.dg}</td>
+                <td>
+                    ${equipo.dg}
+                </td>
 
             `;
 
 
-            tbody.appendChild(tr);
+            tbody.appendChild(
+                tr
+            );
 
         }
     );
@@ -2275,41 +2627,76 @@ async function actualizarTabla() {
 }
 
 
-/* =========================================================
-   LOGIN SUPABASE
-========================================================= */
+/* =====================================================
+   LOGIN
+===================================================== */
+
+function abrirLogin() {
+
+    document
+        .getElementById(
+            "loginBox"
+        )
+        .style.display = "flex";
+
+
+    document
+        .getElementById(
+            "loginMensaje"
+        )
+        .textContent = "";
+
+}
+
+
+function cerrarLogin() {
+
+    document
+        .getElementById(
+            "loginBox"
+        )
+        .style.display = "none";
+
+}
+
+
+/* =====================================================
+   INICIAR SESION
+===================================================== */
 
 async function iniciarSesion() {
 
     const email =
-        document.getElementById(
-            "emailLogin"
-        ).value.trim();
+        document
+            .getElementById(
+                "loginEmail"
+            )
+            .value
+            .trim();
 
 
     const password =
-        document.getElementById(
-            "passwordLogin"
-        ).value;
+        document
+            .getElementById(
+                "loginPassword"
+            )
+            .value;
 
 
     const mensaje =
-        document.getElementById(
-            "mensajeLogin"
-        );
-
-
-    mensaje.className =
-        "mensaje";
+        document
+            .getElementById(
+                "loginMensaje"
+            );
 
 
     mensaje.textContent = "";
 
 
-    if (!email || !password) {
-
-        mensaje.className =
-            "mensaje error";
+    if (
+        !email ||
+        !password
+    ) {
 
         mensaje.textContent =
             "Completá el correo y la contraseña.";
@@ -2319,13 +2706,19 @@ async function iniciarSesion() {
     }
 
 
-    const { data, error } =
-        await supabaseClient.auth
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .auth
             .signInWithPassword({
 
-                email: email,
+                email:
+                    email,
 
-                password: password
+                password:
+                    password
 
             });
 
@@ -2334,47 +2727,34 @@ async function iniciarSesion() {
 
         console.error(error);
 
-        mensaje.className =
-            "mensaje error";
 
         mensaje.textContent =
-            "Error: " + error.message;
+            "❌ Correo o contraseña incorrectos.";
 
         return;
 
     }
 
 
-    usuarioActual =
-        data.user;
+    console.log(
+        "Administrador conectado:",
+        data.user.email
+    );
 
 
-    mostrarPanelAdmin();
-
-}
+    cerrarLogin();
 
 
-/* =========================================================
-   MOSTRAR PANEL ADMIN
-========================================================= */
-
-function mostrarPanelAdmin() {
-
-    document.getElementById(
-        "loginContainer"
-    ).style.display = "none";
+    actualizarEstadoLogin();
 
 
-    document.getElementById(
-        "adminContainer"
-    ).style.display = "block";
+    /*
+       Abrir administración
+    */
 
-
-    document.getElementById(
-        "usuarioLogueado"
-    ).textContent =
-        "✅ Sesión iniciada: " +
-        usuarioActual.email;
+    mostrarSeccion(
+        "resultados"
+    );
 
 
     mostrarAdmin();
@@ -2382,35 +2762,23 @@ function mostrarPanelAdmin() {
 }
 
 
-/* =========================================================
+/* =====================================================
    CERRAR SESION
-========================================================= */
+===================================================== */
 
 async function cerrarSesion() {
 
-    await supabaseClient.auth.signOut();
-
-    usuarioActual = null;
-
-
-    document.getElementById(
-        "loginContainer"
-    ).style.display = "block";
+    await supabaseClient
+        .auth
+        .signOut();
 
 
-    document.getElementById(
-        "adminContainer"
-    ).style.display = "none";
+    actualizarEstadoLogin();
 
 
-    document.getElementById(
-        "emailLogin"
-    ).value = "";
-
-
-    document.getElementById(
-        "passwordLogin"
-    ).value = "";
+    mostrarSeccion(
+        "tabla"
+    );
 
 
     alert(
@@ -2420,39 +2788,117 @@ async function cerrarSesion() {
 }
 
 
-/* =========================================================
-   COMPROBAR SESION
-========================================================= */
+/* =====================================================
+   COMPROBAR ESTADO LOGIN
+===================================================== */
 
-async function comprobarSesion() {
+async function actualizarEstadoLogin() {
 
     const {
-        data
+        data: {
+            session
+        }
     } =
         await supabaseClient
             .auth
             .getSession();
 
 
-    if (
-        data &&
-        data.session &&
-        data.session.user
-    ) {
+    const btnAdmin =
+        document.getElementById(
+            "btnAdmin"
+        );
 
-        usuarioActual =
-            data.session.user;
 
-        mostrarPanelAdmin();
+    const btnLogin =
+        document.getElementById(
+            "btnLogin"
+        );
+
+
+    const usuario =
+        document.getElementById(
+            "usuarioLogueado"
+        );
+
+
+    if (session) {
+
+        /*
+           LOGUEADO
+        */
+
+        btnAdmin.style.display =
+            "block";
+
+
+        btnLogin.textContent =
+            "🚪 Cerrar sesión";
+
+
+        btnLogin.onclick =
+            cerrarSesion;
+
+
+        if (usuario) {
+
+            usuario.innerHTML =
+                "👤 Sesión iniciada como: <strong>" +
+                session.user.email +
+                "</strong>";
+
+        }
+
+    } else {
+
+        /*
+           NO LOGUEADO
+        */
+
+        btnAdmin.style.display =
+            "none";
+
+
+        btnLogin.textContent =
+            "🔐 Admin";
+
+
+        btnLogin.onclick =
+            abrirLogin;
+
+
+        if (usuario) {
+
+            usuario.textContent = "";
+
+        }
 
     }
 
 }
 
 
-/* =========================================================
-   INICIO
-========================================================= */
+/* =====================================================
+   DETECTAR CAMBIOS DE SESION
+===================================================== */
+
+supabaseClient
+    .auth
+    .onAuthStateChange(
+        function(
+            event,
+            session
+        ) {
+
+            actualizarEstadoLogin();
+
+        }
+    );
+
+
+/* =====================================================
+   INICIAR PAGINA
+===================================================== */
 
 async function iniciarPagina() {
 
@@ -2460,22 +2906,26 @@ async function iniciarPagina() {
 
     crearSelectorAdmin();
 
-    await comprobarSesion();
 
-    await mostrarFecha(1);
+    await cargarResultados();
 
-    await mostrarResultados();
 
-    await actualizarTabla();
+    mostrarFecha(1);
 
-    mostrarSeccion("tabla");
+    mostrarAdmin();
+
+    actualizarTabla();
+
+
+    mostrarSeccion(
+        "tabla"
+    );
+
+
+    actualizarEstadoLogin();
 
 }
 
-
-/* =========================================================
-   EJECUTAR
-========================================================= */
 
 iniciarPagina();
 
