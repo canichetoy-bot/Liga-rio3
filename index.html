@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Liga Regional</title>
+
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 
@@ -40,7 +44,6 @@ header p {
     color: #d1d5db;
 }
 
-
 /* =========================
    BOTON MENU
 ========================= */
@@ -60,7 +63,6 @@ header p {
     color: white;
 
     font-size: 24px;
-
     cursor: pointer;
 
     z-index: 1001;
@@ -70,13 +72,11 @@ header p {
     background: #1d4ed8;
 }
 
-
 /* =========================
    MENU LATERAL
 ========================= */
 
 .menu-lateral {
-
     position: fixed;
 
     top: 0;
@@ -109,7 +109,6 @@ header p {
 }
 
 .menu-opcion {
-
     width: 100%;
 
     padding: 15px;
@@ -141,13 +140,11 @@ header p {
     background: #2563eb;
 }
 
-
 /* =========================
-   FONDO MENU
+   OVERLAY
 ========================= */
 
 .overlay {
-
     position: fixed;
 
     inset: 0;
@@ -163,13 +160,11 @@ header p {
     display: block;
 }
 
-
 /* =========================
    NAVEGACION
 ========================= */
 
 nav {
-
     background: #1f2937;
 
     display: flex;
@@ -184,7 +179,6 @@ nav {
 }
 
 nav button {
-
     background: #374151;
 
     color: white;
@@ -202,17 +196,14 @@ nav button {
 
 nav button:hover,
 nav button.active {
-
     background: #2563eb;
 }
-
 
 /* =========================
    CONTENEDOR
 ========================= */
 
 .container {
-
     max-width: 1100px;
 
     margin: auto;
@@ -221,7 +212,6 @@ nav button.active {
 }
 
 .seccion {
-
     background: white;
 
     border-radius: 10px;
@@ -237,13 +227,11 @@ h2 {
     margin-top: 0;
 }
 
-
 /* =========================
-   CATEGORIA ACTUAL
+   CATEGORIA
 ========================= */
 
 .categoria-actual {
-
     display: inline-block;
 
     background: #2563eb;
@@ -261,7 +249,6 @@ h2 {
     margin-bottom: 15px;
 }
 
-
 /* =========================
    TABLA
 ========================= */
@@ -271,7 +258,6 @@ h2 {
 }
 
 table {
-
     width: 100%;
 
     border-collapse: collapse;
@@ -280,7 +266,6 @@ table {
 }
 
 th {
-
     background: #111827;
 
     color: white;
@@ -291,7 +276,6 @@ th {
 }
 
 td {
-
     padding: 10px;
 
     border-bottom: 1px solid #e5e7eb;
@@ -300,29 +284,24 @@ td {
 }
 
 td:nth-child(2) {
-
     text-align: left;
 
     font-weight: bold;
 }
 
 tr:hover {
-
     background: #f9fafb;
 }
 
 .posicion {
-
     font-weight: bold;
 }
-
 
 /* =========================
    FECHAS
 ========================= */
 
 .selector-fecha {
-
     display: flex;
 
     gap: 8px;
@@ -333,7 +312,6 @@ tr:hover {
 }
 
 .selector-fecha button {
-
     border: none;
 
     background: #e5e7eb;
@@ -347,19 +325,16 @@ tr:hover {
 
 .selector-fecha button:hover,
 .selector-fecha button.active {
-
     background: #2563eb;
 
     color: white;
 }
-
 
 /* =========================
    PARTIDOS
 ========================= */
 
 .partido {
-
     border: 1px solid #e5e7eb;
 
     border-radius: 8px;
@@ -372,7 +347,6 @@ tr:hover {
 }
 
 .partido-header {
-
     display: flex;
 
     justify-content: space-between;
@@ -383,7 +357,6 @@ tr:hover {
 }
 
 .estado {
-
     font-size: 12px;
 
     font-weight: bold;
@@ -396,14 +369,12 @@ tr:hover {
 }
 
 .estado.finalizado {
-
     background: #dcfce7;
 
     color: #166534;
 }
 
 .equipos {
-
     display: grid;
 
     grid-template-columns: 1fr auto 1fr;
@@ -414,22 +385,18 @@ tr:hover {
 }
 
 .equipo {
-
     font-weight: bold;
 }
 
 .local {
-
     text-align: right;
 }
 
 .visitante {
-
     text-align: left;
 }
 
 .resultado {
-
     font-size: 24px;
 
     font-weight: bold;
@@ -437,13 +404,11 @@ tr:hover {
     white-space: nowrap;
 }
 
-
 /* =========================
    ADMIN
 ========================= */
 
 select {
-
     padding: 10px;
 
     border-radius: 6px;
@@ -454,10 +419,9 @@ select {
 }
 
 .admin-partido {
-
     display: grid;
 
-    grid-template-columns: 1fr 70px 20px 70px 1fr;
+    grid-template-columns: 1fr 70px 20px 70px 1fr 80px;
 
     gap: 8px;
 
@@ -467,7 +431,6 @@ select {
 }
 
 .admin-partido input {
-
     width: 100%;
 
     padding: 8px;
@@ -480,7 +443,6 @@ select {
 }
 
 .admin-partido button {
-
     border: none;
 
     background: #16a34a;
@@ -494,13 +456,41 @@ select {
     cursor: pointer;
 }
 
-.admin-equipo {
+.admin-partido button:hover {
+    background: #15803d;
+}
 
+.admin-equipo {
     font-size: 14px;
 
     font-weight: bold;
 }
 
+/* =========================
+   MENSAJES
+========================= */
+
+.mensaje {
+    padding: 15px;
+
+    border-radius: 8px;
+
+    background: #f3f4f6;
+
+    margin-bottom: 15px;
+}
+
+.mensaje.error {
+    background: #fee2e2;
+
+    color: #991b1b;
+}
+
+.mensaje.exito {
+    background: #dcfce7;
+
+    color: #166534;
+}
 
 /* =========================
    RESPONSIVE
@@ -521,7 +511,6 @@ select {
     }
 
     .equipos {
-
         grid-template-columns: 1fr;
 
         text-align: center;
@@ -531,33 +520,32 @@ select {
 
     .local,
     .visitante {
-
         text-align: center;
     }
 
     .admin-partido {
-
         grid-template-columns:
         1fr 55px 15px 55px;
     }
 
     .admin-partido button {
-
         grid-column: 1 / -1;
     }
 
-    .menu-lateral {
+    .admin-equipo {
+        text-align: center;
+    }
 
+    .menu-lateral {
         width: 280px;
     }
 }
 
 </style>
+
 </head>
 
-
 <body>
-
 
 <!-- =========================
      BOTON MENU
@@ -571,7 +559,6 @@ select {
 
 </button>
 
-
 <!-- =========================
      OVERLAY
 ========================= -->
@@ -581,7 +568,6 @@ select {
     class="overlay"
     onclick="cerrarMenu()">
 </div>
-
 
 <!-- =========================
      MENU LATERAL
@@ -613,7 +599,6 @@ select {
 
 </div>
 
-
 <!-- =========================
      HEADER
 ========================= -->
@@ -627,7 +612,6 @@ select {
     </p>
 
 </header>
-
 
 <!-- =========================
      NAVEGACION
@@ -661,9 +645,7 @@ select {
 
 </nav>
 
-
 <div class="container">
-
 
 <!-- =========================
      TABLA
@@ -685,6 +667,8 @@ select {
         📊 Tabla de posiciones
     </h2>
 
+    <div id="mensajeTabla"></div>
+
     <div class="tabla-container">
 
         <table>
@@ -694,31 +678,22 @@ select {
                 <tr>
 
                     <th>Pos</th>
-
                     <th>Equipo</th>
-
                     <th>Pts</th>
-
                     <th>PJ</th>
-
                     <th>PG</th>
-
                     <th>PE</th>
-
                     <th>PP</th>
-
                     <th>GF</th>
-
                     <th>GC</th>
-
                     <th>DG</th>
 
                 </tr>
 
             </thead>
 
-            <tbody
-                id="tablaPosiciones">
+            <tbody id="tablaPosiciones">
+
             </tbody>
 
         </table>
@@ -726,7 +701,6 @@ select {
     </div>
 
 </section>
-
 
 <!-- =========================
      FIXTURE
@@ -759,7 +733,6 @@ select {
 
 </section>
 
-
 <!-- =========================
      RESULTADOS
 ========================= -->
@@ -790,17 +763,35 @@ select {
     </select>
 
     <div
+        id="adminMensaje">
+    </div>
+
+    <div
         id="adminPartidos"
         style="margin-top:20px;">
     </div>
 
 </section>
 
-
 </div>
 
-
 <script>
+
+/* =========================================================
+   SUPABASE
+========================================================= */
+
+const SUPABASE_URL =
+    "https://vxncfnsysnrrewhbbxsc.supabase.co";
+
+const SUPABASE_KEY =
+    sb_publishable_UPVv4BOH2_VrgyLLf2xMNQ_2t1Ki6Bd;
+
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
 /* =========================================================
@@ -810,340 +801,34 @@ select {
 const equipos = [
 
     "Juventud Agrario",
-
     "Belgrano Football",
-
     "Social y Deportivo VGB",
-
     "Sp. Belgrano",
-
     "Atlético Ascasubi",
-
     "Dep. Independiente",
-
     "9 de Julio (Río Tercero)",
-
     "Atl. Independiente",
-
     "Atl. Estudiantes",
-
     "Atlético Río Tercero",
-
     "Atl. Huracán",
-
     "Dep. Huracán (Tancacha)",
-
     "Vecinos Unidos",
-
     "Recreativo Elenense",
-
     "Talleres (Berrotarán)",
-
     "Atlético Almafuerte"
 
 ];
 
 
 /* =========================================================
-   FIXTURE
-========================================================= */
-
-const fixture = {
-
-1: [
-["Juventud Agrario","Belgrano Football"],
-["Social y Deportivo VGB","Sp. Belgrano"],
-["Atlético Ascasubi","Dep. Independiente"],
-["9 de Julio (Río Tercero)","Atl. Independiente"],
-["Atl. Estudiantes","Atlético Río Tercero"],
-["Atl. Huracán","Dep. Huracán (Tancacha)"],
-["Vecinos Unidos","Recreativo Elenense"],
-["Talleres (Berrotarán)","Atlético Almafuerte"]
-],
-
-2: [
-["Juventud Agrario","Dep. Independiente"],
-["Sp. Belgrano","Atl. Independiente"],
-["Belgrano Football","Atlético Río Tercero"],
-["Social y Deportivo VGB","Dep. Huracán (Tancacha)"],
-["Atlético Ascasubi","Recreativo Elenense"],
-["9 de Julio (Río Tercero)","Talleres (Berrotarán)"],
-["Atl. Estudiantes","Atlético Almafuerte"],
-["Vecinos Unidos","Atl. Huracán"]
-],
-
-3: [
-["Juventud Agrario","Vecinos Unidos"],
-["Atlético Almafuerte","Atl. Huracán"],
-["Talleres (Berrotarán)","Atl. Estudiantes"],
-["Recreativo Elenense","9 de Julio (Río Tercero)"],
-["Dep. Huracán (Tancacha)","Atlético Ascasubi"],
-["Atlético Río Tercero","Social y Deportivo VGB"],
-["Atl. Independiente","Belgrano Football"],
-["Dep. Independiente","Sp. Belgrano"]
-],
-
-4: [
-["Sp. Belgrano","Juventud Agrario"],
-["Belgrano Football","Dep. Independiente"],
-["Social y Deportivo VGB","Atl. Independiente"],
-["Atlético Ascasubi","Atlético Río Tercero"],
-["9 de Julio (Río Tercero)","Dep. Huracán (Tancacha)"],
-["Atl. Estudiantes","Recreativo Elenense"],
-["Atl. Huracán","Talleres (Berrotarán)"],
-["Vecinos Unidos","Atlético Almafuerte"]
-],
-
-5: [
-["Atlético Almafuerte","Juventud Agrario"],
-["Talleres (Berrotarán)","Vecinos Unidos"],
-["Recreativo Elenense","Atl. Huracán"],
-["Dep. Huracán (Tancacha)","Atl. Estudiantes"],
-["9 de Julio (Río Tercero)","Atlético Río Tercero"],
-["Atl. Independiente","Atlético Ascasubi"],
-["Dep. Independiente","Social y Deportivo VGB"],
-["Sp. Belgrano","Belgrano Football"]
-],
-
-6: [
-["Talleres (Berrotarán)","Juventud Agrario"],
-["Recreativo Elenense","Atlético Almafuerte"],
-["Dep. Huracán (Tancacha)","Vecinos Unidos"],
-["Atlético Río Tercero","Atl. Huracán"],
-["Atl. Estudiantes","Atl. Independiente"],
-["Dep. Independiente","9 de Julio (Río Tercero)"],
-["Sp. Belgrano","Atlético Ascasubi"],
-["Belgrano Football","Social y Deportivo VGB"]
-],
-
-7: [
-["Social y Deportivo VGB","Juventud Agrario"],
-["Atlético Ascasubi","Belgrano Football"],
-["9 de Julio (Río Tercero)","Sp. Belgrano"],
-["Dep. Independiente","Atl. Estudiantes"],
-["Atl. Independiente","Atl. Huracán"],
-["Vecinos Unidos","Atlético Río Tercero"],
-["Atlético Almafuerte","Dep. Huracán (Tancacha)"],
-["Talleres (Berrotarán)","Recreativo Elenense"]
-],
-
-8: [
-["Juventud Agrario","Recreativo Elenense"],
-["Dep. Huracán (Tancacha)","Talleres (Berrotarán)"],
-["Atlético Río Tercero","Atlético Almafuerte"],
-["Atl. Independiente","Vecinos Unidos"],
-["Dep. Independiente","Atl. Huracán"],
-["Sp. Belgrano","Atl. Estudiantes"],
-["Belgrano Football","9 de Julio (Río Tercero)"],
-["Social y Deportivo VGB","Atlético Ascasubi"]
-],
-
-9: [
-["Atlético Ascasubi","Juventud Agrario"],
-["9 de Julio (Río Tercero)","Social y Deportivo VGB"],
-["Atl. Estudiantes","Belgrano Football"],
-["Atl. Huracán","Sp. Belgrano"],
-["Dep. Independiente","Vecinos Unidos"],
-["Atlético Almafuerte","Atl. Independiente"],
-["Atlético Río Tercero","Talleres (Berrotarán)"],
-["Recreativo Elenense","Dep. Huracán (Tancacha)"]
-],
-
-10: [
-["Juventud Agrario","Dep. Huracán (Tancacha)"],
-["Recreativo Elenense","Atlético Río Tercero"],
-["Atl. Independiente","Talleres (Berrotarán)"],
-["Dep. Independiente","Atlético Almafuerte"],
-["Sp. Belgrano","Vecinos Unidos"],
-["Belgrano Football","Atl. Huracán"],
-["Social y Deportivo VGB","Atl. Estudiantes"],
-["Atlético Ascasubi","9 de Julio (Río Tercero)"]
-],
-
-11: [
-["Atl. Independiente","Atl. Estudiantes"],
-["Atlético Río Tercero","9 de Julio (Río Tercero)"],
-["Atlético Ascasubi","Dep. Huracán (Tancacha)"],
-["Social y Deportivo VGB","Recreativo Elenense"],
-["Talleres (Berrotarán)","Belgrano Football"],
-["Atlético Almafuerte","Sp. Belgrano"],
-["Vecinos Unidos","Dep. Independiente"],
-["Juventud Agrario","Atl. Huracán"]
-],
-
-12: [
-["9 de Julio (Río Tercero)","Juventud Agrario"],
-["Atl. Estudiantes","Atlético Ascasubi"],
-["Atl. Huracán","Social y Deportivo VGB"],
-["Vecinos Unidos","Belgrano Football"],
-["Sp. Belgrano","Atlético Almafuerte"],
-["Talleres (Berrotarán)","Dep. Independiente"],
-["Recreativo Elenense","Atl. Independiente"],
-["Dep. Huracán (Tancacha)","Atlético Río Tercero"]
-],
-
-13: [
-["Juventud Agrario","Atlético Río Tercero"],
-["Dep. Huracán (Tancacha)","Atl. Independiente"],
-["Dep. Independiente","Recreativo Elenense"],
-["Sp. Belgrano","Talleres (Berrotarán)"],
-["Belgrano Football","Atlético Almafuerte"],
-["Vecinos Unidos","Social y Deportivo VGB"],
-["Atl. Huracán","Atlético Ascasubi"],
-["9 de Julio (Río Tercero)","Atl. Estudiantes"]
-],
-
-14: [
-["Atl. Estudiantes","Juventud Agrario"],
-["Atl. Huracán","9 de Julio (Río Tercero)"],
-["Vecinos Unidos","Atlético Ascasubi"],
-["Atlético Almafuerte","Social y Deportivo VGB"],
-["Belgrano Football","Talleres (Berrotarán)"],
-["Recreativo Elenense","Sp. Belgrano"],
-["Dep. Huracán (Tancacha)","Dep. Independiente"],
-["Atlético Río Tercero","Atl. Independiente"]
-],
-
-15: [
-["Atl. Independiente","Juventud Agrario"],
-["Dep. Independiente","Atlético Río Tercero"],
-["Sp. Belgrano","Dep. Huracán (Tancacha)"],
-["Belgrano Football","Recreativo Elenense"],
-["Social y Deportivo VGB","Talleres (Berrotarán)"],
-["Atlético Ascasubi","Atlético Almafuerte"],
-["9 de Julio (Río Tercero)","Vecinos Unidos"],
-["Atl. Estudiantes","Atl. Huracán"]
-],
-
-16: [
-["Atl. Huracán","Juventud Agrario"],
-["Vecinos Unidos","Atl. Estudiantes"],
-["Atlético Almafuerte","9 de Julio (Río Tercero)"],
-["Talleres (Berrotarán)","Atlético Ascasubi"],
-["Recreativo Elenense","Social y Deportivo VGB"],
-["Dep. Huracán (Tancacha)","Belgrano Football"],
-["Atlético Río Tercero","Sp. Belgrano"],
-["Atl. Independiente","Dep. Independiente"]
-]
-
-};
-
-
-/* =========================================================
-   CATEGORIA
+   VARIABLES
 ========================================================= */
 
 let categoriaActual = "primera";
 
+let fechaActual = 1;
 
-/*
-   Los resultados se guardan separados:
-
-   primera_resultados
-   reserva_resultados
-*/
-
-let resultadosPrimera =
-    JSON.parse(localStorage.getItem("primera_resultados")) || {};
-
-let resultadosReserva =
-    JSON.parse(localStorage.getItem("reserva_resultados")) || {};
-
-
-/* =========================================================
-   OBTENER RESULTADOS
-========================================================= */
-
-function obtenerResultados() {
-
-    if (categoriaActual === "primera") {
-
-        return resultadosPrimera;
-
-    } else {
-
-        return resultadosReserva;
-
-    }
-
-}
-
-
-/* =========================================================
-   CAMBIAR CATEGORIA
-========================================================= */
-
-function cambiarCategoria(categoria) {
-
-    categoriaActual = categoria;
-
-
-    /*
-       Cambiar botones
-    */
-
-    document
-        .getElementById("btnPrimera")
-        .classList.remove("activo");
-
-    document
-        .getElementById("btnReserva")
-        .classList.remove("activo");
-
-
-    if (categoria === "primera") {
-
-        document
-            .getElementById("btnPrimera")
-            .classList.add("activo");
-
-    } else {
-
-        document
-            .getElementById("btnReserva")
-            .classList.add("activo");
-
-    }
-
-
-    /*
-       Cambiar textos
-    */
-
-    const nombre =
-        categoria === "primera"
-            ? "Primera"
-            : "Reserva";
-
-
-    document.getElementById("categoriaTabla")
-        .textContent = nombre;
-
-    document.getElementById("categoriaFixture")
-        .textContent = nombre;
-
-    document.getElementById("categoriaResultados")
-        .textContent = nombre;
-
-
-    /*
-       Actualizar todo
-    */
-
-    actualizarTabla();
-
-    mostrarFecha(fechaActual);
-
-    mostrarAdmin();
-
-
-    /*
-       Cerrar menú
-    */
-
-    cerrarMenu();
-
-}
+let partidosActuales = [];
 
 
 /* =========================================================
@@ -1177,7 +862,63 @@ function cerrarMenu() {
 
 
 /* =========================================================
-   SECCIONES
+   CAMBIAR CATEGORIA
+========================================================= */
+
+async function cambiarCategoria(categoria) {
+
+    categoriaActual = categoria;
+
+    document
+        .getElementById("btnPrimera")
+        .classList.remove("activo");
+
+    document
+        .getElementById("btnReserva")
+        .classList.remove("activo");
+
+
+    if (categoria === "primera") {
+
+        document
+            .getElementById("btnPrimera")
+            .classList.add("activo");
+
+    } else {
+
+        document
+            .getElementById("btnReserva")
+            .classList.add("activo");
+
+    }
+
+
+    const nombre =
+        categoria === "primera"
+            ? "Primera"
+            : "Reserva";
+
+
+    document.getElementById("categoriaTabla")
+        .textContent = nombre;
+
+    document.getElementById("categoriaFixture")
+        .textContent = nombre;
+
+    document.getElementById("categoriaResultados")
+        .textContent = nombre;
+
+
+    cerrarMenu();
+
+
+    await cargarTodo();
+
+}
+
+
+/* =========================================================
+   NAVEGACION
 ========================================================= */
 
 function mostrarSeccion(seccion) {
@@ -1235,14 +976,64 @@ function mostrarSeccion(seccion) {
 
 
 /* =========================================================
-   FECHA ACTUAL
+   CARGAR TODO
 ========================================================= */
 
-let fechaActual = 1;
+async function cargarTodo() {
+
+    await cargarPartidos();
+
+    crearSelectorFechas();
+
+    crearSelectorAdmin();
+
+    await mostrarFecha(fechaActual);
+
+    await mostrarAdmin();
+
+    actualizarTabla();
+
+}
 
 
 /* =========================================================
-   CREAR SELECTOR DE FECHAS
+   CARGAR PARTIDOS DE SUPABASE
+========================================================= */
+
+async function cargarPartidos() {
+
+    const { data, error } =
+        await supabaseClient
+            .from("partidos")
+            .select("*")
+            .eq("categoria", categoriaActual)
+            .order("fecha", { ascending: true })
+            .order("id", { ascending: true });
+
+
+    if (error) {
+
+        console.error(error);
+
+        mostrarError(
+            "No se pudieron cargar los partidos: " +
+            error.message
+        );
+
+        partidosActuales = [];
+
+        return;
+
+    }
+
+
+    partidosActuales = data || [];
+
+}
+
+
+/* =========================================================
+   SELECTOR FECHAS
 ========================================================= */
 
 function crearSelectorFechas() {
@@ -1251,7 +1042,14 @@ function crearSelectorFechas() {
         document.getElementById("selectorFechas");
 
 
-    for (let fecha = 1; fecha <= 16; fecha++) {
+    contenedor.innerHTML = "";
+
+
+    for (
+        let fecha = 1;
+        fecha <= 16;
+        fecha++
+    ) {
 
         const boton =
             document.createElement("button");
@@ -1261,14 +1059,15 @@ function crearSelectorFechas() {
             "Fecha " + fecha;
 
 
-        boton.onclick = function() {
+        boton.onclick =
+            function() {
 
-            mostrarFecha(fecha);
+                mostrarFecha(fecha);
 
-        };
+            };
 
 
-        if (fecha === 1) {
+        if (fecha === fechaActual) {
 
             boton.classList.add("active");
 
@@ -1286,115 +1085,144 @@ function crearSelectorFechas() {
    MOSTRAR FECHA
 ========================================================= */
 
-function mostrarFecha(fecha) {
+async function mostrarFecha(fecha) {
 
     fechaActual = fecha;
+
+
+    document
+        .querySelectorAll(
+            "#selectorFechas button"
+        )
+        .forEach(
+            boton =>
+                boton.classList.remove("active")
+        );
+
+
+    const boton =
+        document.querySelectorAll(
+            "#selectorFechas button"
+        )[fecha - 1];
+
+
+    if (boton) {
+
+        boton.classList.add("active");
+
+    }
 
 
     const contenedor =
         document.getElementById("partidos");
 
 
-    contenedor.innerHTML = "";
+    contenedor.innerHTML =
+        "<p>Cargando partidos...</p>";
 
 
-    document
-        .querySelectorAll("#selectorFechas button")
-        .forEach(boton =>
-            boton.classList.remove("active")
+    const partidosFecha =
+        partidosActuales.filter(
+            partido =>
+                Number(partido.fecha) ===
+                Number(fecha)
         );
 
 
-    document
-        .querySelectorAll("#selectorFechas button")
-        [fecha - 1]
-        .classList.add("active");
+    if (
+        partidosFecha.length === 0
+    ) {
+
+        contenedor.innerHTML =
+            "<div class='mensaje'>No hay partidos cargados para esta fecha.</div>";
+
+        return;
+
+    }
 
 
-    const resultados =
-        obtenerResultados();
+    contenedor.innerHTML = "";
 
 
-    fixture[fecha].forEach((partido, indice) => {
+    partidosFecha.forEach(
+        (partido, indice) => {
 
-        const local = partido[0];
-
-        const visitante = partido[1];
-
-
-        const id =
-            fecha + "-" + indice;
-
-
-        const resultado =
-            resultados[id];
+            const finalizado =
+                partido.estado === "finalizado" ||
+                (
+                    partido.goles_local !== null &&
+                    partido.goles_visitante !== null
+                );
 
 
-        let marcador = "-";
+            let marcador = "-";
 
-        let estado = "Pendiente";
+            let estado = "Pendiente";
 
-        let claseEstado = "";
-
-
-        if (resultado) {
-
-            marcador =
-                resultado.golesLocal +
-                " - " +
-                resultado.golesVisitante;
+            let claseEstado = "";
 
 
-            estado = "Finalizado";
+            if (finalizado) {
 
-            claseEstado = "finalizado";
+                marcador =
+                    partido.goles_local +
+                    " - " +
+                    partido.goles_visitante;
+
+                estado =
+                    "Finalizado";
+
+                claseEstado =
+                    "finalizado";
+
+            }
+
+
+            const div =
+                document.createElement("div");
+
+
+            div.className =
+                "partido";
+
+
+            div.innerHTML = `
+
+                <div class="partido-header">
+
+                    <strong>
+                        Partido ${indice + 1}
+                    </strong>
+
+                    <span class="estado ${claseEstado}">
+                        ${estado}
+                    </span>
+
+                </div>
+
+                <div class="equipos">
+
+                    <div class="equipo local">
+                        ${partido.local}
+                    </div>
+
+                    <div class="resultado">
+                        ${marcador}
+                    </div>
+
+                    <div class="equipo visitante">
+                        ${partido.visitante}
+                    </div>
+
+                </div>
+
+            `;
+
+
+            contenedor.appendChild(div);
 
         }
-
-
-        const div =
-            document.createElement("div");
-
-
-        div.className = "partido";
-
-
-        div.innerHTML = `
-
-            <div class="partido-header">
-
-                <strong>
-                    Partido ${indice + 1}
-                </strong>
-
-                <span class="estado ${claseEstado}">
-                    ${estado}
-                </span>
-
-            </div>
-
-            <div class="equipos">
-
-                <div class="equipo local">
-                    ${local}
-                </div>
-
-                <div class="resultado">
-                    ${marcador}
-                </div>
-
-                <div class="equipo visitante">
-                    ${visitante}
-                </div>
-
-            </div>
-
-        `;
-
-
-        contenedor.appendChild(div);
-
-    });
+    );
 
 }
 
@@ -1409,16 +1237,39 @@ function crearSelectorAdmin() {
         document.getElementById("fechaAdmin");
 
 
-    for (let fecha = 1; fecha <= 16; fecha++) {
+    const fechaSeleccionada =
+        select.value || fechaActual;
+
+
+    select.innerHTML = "";
+
+
+    for (
+        let fecha = 1;
+        fecha <= 16;
+        fecha++
+    ) {
 
         const option =
             document.createElement("option");
 
 
-        option.value = fecha;
+        option.value =
+            fecha;
+
 
         option.textContent =
             "Fecha " + fecha;
+
+
+        if (
+            Number(fechaSeleccionada) ===
+            fecha
+        ) {
+
+            option.selected = true;
+
+        }
 
 
         select.appendChild(option);
@@ -1432,89 +1283,114 @@ function crearSelectorAdmin() {
    MOSTRAR ADMIN
 ========================================================= */
 
-function mostrarAdmin() {
+async function mostrarAdmin() {
+
+    const select =
+        document.getElementById("fechaAdmin");
+
 
     const fecha =
-        Number(
-            document.getElementById("fechaAdmin").value
-        );
+        Number(select.value || 1);
 
 
     const contenedor =
-        document.getElementById("adminPartidos");
+        document.getElementById(
+            "adminPartidos"
+        );
+
+
+    contenedor.innerHTML =
+        "<p>Cargando partidos...</p>";
+
+
+    const partidosFecha =
+        partidosActuales.filter(
+            partido =>
+                Number(partido.fecha) ===
+                fecha
+        );
+
+
+    if (
+        partidosFecha.length === 0
+    ) {
+
+        contenedor.innerHTML =
+            "<div class='mensaje'>No hay partidos cargados para esta fecha.</div>";
+
+        return;
+
+    }
 
 
     contenedor.innerHTML = "";
 
 
-    const resultados =
-        obtenerResultados();
+    partidosFecha.forEach(
+        partido => {
+
+            const div =
+                document.createElement("div");
 
 
-    fixture[fecha].forEach((partido, indice) => {
-
-        const local = partido[0];
-
-        const visitante = partido[1];
+            div.className =
+                "admin-partido";
 
 
-        const id =
-            fecha + "-" + indice;
+            const golesLocal =
+                partido.goles_local !== null
+                    ? partido.goles_local
+                    : "";
 
 
-        const resultado =
-            resultados[id] || {};
+            const golesVisitante =
+                partido.goles_visitante !== null
+                    ? partido.goles_visitante
+                    : "";
 
 
-        const div =
-            document.createElement("div");
+            div.innerHTML = `
+
+                <div class="admin-equipo">
+                    ${partido.local}
+                </div>
+
+                <input
+                    type="number"
+                    min="0"
+                    id="local-${partido.id}"
+                    value="${golesLocal}"
+                    placeholder="0"
+                >
+
+                <strong>-</strong>
+
+                <input
+                    type="number"
+                    min="0"
+                    id="visitante-${partido.id}"
+                    value="${golesVisitante}"
+                    placeholder="0"
+                >
+
+                <div class="admin-equipo">
+                    ${partido.visitante}
+                </div>
+
+                <button
+                    onclick="guardarResultado(${partido.id})">
+
+                    Guardar
+
+                </button>
+
+            `;
 
 
-        div.className =
-            "admin-partido";
+            contenedor.appendChild(div);
 
-
-        div.innerHTML = `
-
-            <div class="admin-equipo">
-                ${local}
-            </div>
-
-            <input
-                type="number"
-                min="0"
-                id="local-${id}"
-                value="${resultado.golesLocal ?? ""}"
-                placeholder="0"
-            >
-
-            <strong>-</strong>
-
-            <input
-                type="number"
-                min="0"
-                id="visitante-${id}"
-                value="${resultado.golesVisitante ?? ""}"
-                placeholder="0"
-            >
-
-            <div class="admin-equipo">
-                ${visitante}
-            </div>
-
-            <button
-                onclick="guardarResultado(${fecha}, ${indice})">
-
-                Guardar
-
-            </button>
-
-        `;
-
-
-        contenedor.appendChild(div);
-
-    });
+        }
+    );
 
 }
 
@@ -1523,22 +1399,26 @@ function mostrarAdmin() {
    GUARDAR RESULTADO
 ========================================================= */
 
-function guardarResultado(fecha, indice) {
+async function guardarResultado(id) {
 
-    const id =
-        fecha + "-" + indice;
+    const inputLocal =
+        document.getElementById(
+            "local-" + id
+        );
+
+
+    const inputVisitante =
+        document.getElementById(
+            "visitante-" + id
+        );
 
 
     const golesLocal =
-        document.getElementById(
-            "local-" + id
-        ).value;
+        inputLocal.value;
 
 
     const golesVisitante =
-        document.getElementById(
-            "visitante-" + id
-        ).value;
+        inputVisitante.value;
 
 
     if (
@@ -1555,38 +1435,69 @@ function guardarResultado(fecha, indice) {
     }
 
 
-    const resultado = {
-
-        golesLocal:
-            Number(golesLocal),
-
-        golesVisitante:
-            Number(golesVisitante)
-
-    };
+    const boton =
+        event.target;
 
 
-    if (categoriaActual === "primera") {
+    boton.disabled = true;
 
-        resultadosPrimera[id] =
-            resultado;
+    boton.textContent =
+        "Guardando...";
 
 
-        localStorage.setItem(
-            "primera_resultados",
-            JSON.stringify(resultadosPrimera)
+    const { data, error } =
+        await supabaseClient
+            .from("partidos")
+            .update({
+
+                goles_local:
+                    Number(golesLocal),
+
+                goles_visitante:
+                    Number(golesVisitante),
+
+                estado:
+                    "finalizado",
+
+                updated_at:
+                    new Date().toISOString()
+
+            })
+            .eq("id", id)
+            .select()
+            .single();
+
+
+    if (error) {
+
+        console.error(error);
+
+        alert(
+            "Error al guardar: " +
+            error.message
         );
 
-    } else {
+        boton.disabled = false;
 
-        resultadosReserva[id] =
-            resultado;
+        boton.textContent =
+            "Guardar";
+
+        return;
+
+    }
 
 
-        localStorage.setItem(
-            "reserva_resultados",
-            JSON.stringify(resultadosReserva)
+    const indice =
+        partidosActuales.findIndex(
+            partido =>
+                partido.id === id
         );
+
+
+    if (indice !== -1) {
+
+        partidosActuales[indice] =
+            data;
 
     }
 
@@ -1596,9 +1507,15 @@ function guardarResultado(fecha, indice) {
     );
 
 
-    mostrarAdmin();
+    boton.disabled = false;
 
-    mostrarFecha(fecha);
+    boton.textContent =
+        "Guardar";
+
+
+    await mostrarFecha(fechaActual);
+
+    await mostrarAdmin();
 
     actualizarTabla();
 
@@ -1606,78 +1523,84 @@ function guardarResultado(fecha, indice) {
 
 
 /* =========================================================
-   TABLA
+   TABLA DE POSICIONES
 ========================================================= */
 
 function actualizarTabla() {
 
-    const resultados =
-        obtenerResultados();
+    const tabla = {};
 
 
-    let tabla = {};
+    equipos.forEach(
+        equipo => {
+
+            tabla[equipo] = {
+
+                equipo: equipo,
+
+                pts: 0,
+
+                pj: 0,
+
+                pg: 0,
+
+                pe: 0,
+
+                pp: 0,
+
+                gf: 0,
+
+                gc: 0,
+
+                dg: 0
+
+            };
+
+        }
+    );
 
 
-    equipos.forEach(equipo => {
+    partidosActuales.forEach(
+        partido => {
 
-        tabla[equipo] = {
+            if (
+                partido.goles_local === null ||
+                partido.goles_visitante === null
+            ) {
 
-            equipo: equipo,
+                return;
 
-            pts: 0,
-
-            pj: 0,
-
-            pg: 0,
-
-            pe: 0,
-
-            pp: 0,
-
-            gf: 0,
-
-            gc: 0,
-
-            dg: 0
-
-        };
-
-    });
-
-
-    Object.keys(resultados)
-        .forEach(id => {
-
-            const partes =
-                id.split("-");
-
-
-            const fecha =
-                Number(partes[0]);
-
-
-            const indice =
-                Number(partes[1]);
-
-
-            const partido =
-                fixture[fecha][indice];
+            }
 
 
             const local =
-                partido[0];
+                partido.local;
 
 
             const visitante =
-                partido[1];
+                partido.visitante;
 
 
             const golesLocal =
-                resultados[id].golesLocal;
+                Number(
+                    partido.goles_local
+                );
 
 
             const golesVisitante =
-                resultados[id].golesVisitante;
+                Number(
+                    partido.goles_visitante
+                );
+
+
+            if (
+                !tabla[local] ||
+                !tabla[visitante]
+            ) {
+
+                return;
+
+            }
 
 
             tabla[local].pj++;
@@ -1737,58 +1660,63 @@ function actualizarTabla() {
 
             }
 
-        });
+        }
+    );
 
 
     Object.values(tabla)
-        .forEach(equipo => {
+        .forEach(
+            equipo => {
 
-            equipo.dg =
-                equipo.gf -
-                equipo.gc;
+                equipo.dg =
+                    equipo.gf -
+                    equipo.gc;
 
-        });
+            }
+        );
 
 
     const posiciones =
         Object.values(tabla)
-        .sort((a,b) => {
+            .sort(
+                (a, b) => {
 
-            if (
-                b.pts !== a.pts
-            ) {
+                    if (
+                        b.pts !== a.pts
+                    ) {
 
-                return b.pts -
-                       a.pts;
+                        return b.pts -
+                               a.pts;
 
-            }
-
-
-            if (
-                b.dg !== a.dg
-            ) {
-
-                return b.dg -
-                       a.dg;
-
-            }
+                    }
 
 
-            if (
-                b.gf !== a.gf
-            ) {
+                    if (
+                        b.dg !== a.dg
+                    ) {
 
-                return b.gf -
-                       a.gf;
+                        return b.dg -
+                               a.dg;
 
-            }
+                    }
 
 
-            return a.equipo.localeCompare(
-                b.equipo
+                    if (
+                        b.gf !== a.gf
+                    ) {
+
+                        return b.gf -
+                               a.gf;
+
+                    }
+
+
+                    return a.equipo.localeCompare(
+                        b.equipo
+                    );
+
+                }
             );
-
-        });
 
 
     const tbody =
@@ -1849,20 +1777,50 @@ function actualizarTabla() {
 
 
 /* =========================================================
+   MENSAJE ERROR
+========================================================= */
+
+function mostrarError(mensaje) {
+
+    const elemento =
+        document.getElementById(
+            "mensajeTabla"
+        );
+
+
+    elemento.innerHTML = `
+
+        <div class="mensaje error">
+            ${mensaje}
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
    INICIAR
 ========================================================= */
 
-crearSelectorFechas();
+async function iniciar() {
 
-crearSelectorAdmin();
+    mostrarSeccion("tabla");
 
-mostrarFecha(1);
+    crearSelectorFechas();
 
-mostrarAdmin();
+    crearSelectorAdmin();
 
-actualizarTabla();
+    await cargarTodo();
 
-mostrarSeccion("tabla");
+}
+
+
+/* =========================================================
+   EJECUTAR
+========================================================= */
+
+iniciar();
 
 </script>
 
