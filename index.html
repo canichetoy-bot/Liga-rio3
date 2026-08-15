@@ -1,378 +1,334 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liga Regional</title>
 
-    <meta charset="UTF-8">
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f4f6;
+    color: #111827;
+}
 
-    <title>Liga Regional Río Tercero</title>
+header {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px 10px;
+}
 
-    <style>
+header h1 {
+    margin: 0;
+    font-size: 30px;
+}
 
-        * {
-            box-sizing: border-box;
-        }
+header p {
+    margin: 8px 0 0;
+    color: #d1d5db;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #F4F6F3;
-            color: #17251C;
-        }
+nav {
+    background: #1f2937;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    flex-wrap: wrap;
+}
 
-        /* =========================
-           ENCABEZADO
-        ========================= */
+nav button {
+    background: #374151;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
 
-        header {
-            background-color: #176B3A;
-            color: white;
-            text-align: center;
-            padding: 25px 10px;
-            border-bottom: 5px solid #C9A227;
-        }
+nav button:hover,
+nav button.active {
+    background: #2563eb;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 30px;
-        }
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
 
-        header p {
-            margin: 8px 0 0;
-            color: #F5D76E;
-            font-weight: bold;
-        }
+.seccion {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
 
+h2 {
+    margin-top: 0;
+}
 
-        /* =========================
-           CONTENEDOR
-        ========================= */
+/* TABLA */
 
-        .contenedor {
-            max-width: 1100px;
-            margin: 20px auto;
-            padding: 0 12px;
-        }
+.tabla-container {
+    overflow-x: auto;
+}
 
-        .seccion {
-            background-color: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border-top: 3px solid #C9A227;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
 
-        h2 {
-            margin-top: 0;
-            color: #176B3A;
-        }
+th {
+    background: #111827;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+}
 
-        h3 {
-            color: #176B3A;
-        }
+td {
+    padding: 10px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: center;
+}
 
+td:nth-child(2) {
+    text-align: left;
+    font-weight: bold;
+}
 
-        /* =========================
-           NAVEGACIÓN DE FECHAS
-        ========================= */
+tr:hover {
+    background: #f9fafb;
+}
 
-        .navegacion-fechas {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            margin: 20px 0;
-        }
+.posicion {
+    font-weight: bold;
+}
 
-        .boton {
-            border: none;
-            background-color: #176B3A;
-            color: white;
-            padding: 10px 16px;
-            border-radius: 7px;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: bold;
-        }
+/* FIXTURE */
 
-        .boton:hover {
-            background-color: #C9A227;
-            color: #17251C;
-        }
+.selector-fecha {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
 
-        .boton:disabled {
-            background-color: #AEB8B1;
-            color: white;
-            cursor: not-allowed;
-        }
+.selector-fecha button {
+    border: none;
+    background: #e5e7eb;
+    padding: 9px 13px;
+    border-radius: 6px;
+    cursor: pointer;
+}
 
-        #numeroFecha {
-            font-size: 22px;
-            font-weight: bold;
-            min-width: 100px;
-            text-align: center;
-            color: #176B3A;
-        }
+.selector-fecha button:hover,
+.selector-fecha button.active {
+    background: #2563eb;
+    color: white;
+}
 
+.partido {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 12px;
+    background: #fff;
+}
 
-        /* =========================
-           PARTIDOS
-        ========================= */
+.partido-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
 
-        .partidos {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+.estado {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 5px;
+    background: #e5e7eb;
+}
 
-        .partido {
-            display: grid;
-            grid-template-columns: 1fr 80px 1fr;
-            align-items: center;
-            padding: 12px;
-            border-bottom: 1px solid #DDE4DE;
-            gap: 10px;
-        }
+.estado.finalizado {
+    background: #dcfce7;
+    color: #166534;
+}
 
-        .partido:last-child {
-            border-bottom: none;
-        }
+.estado.en-juego {
+    background: #fee2e2;
+    color: #991b1b;
+}
 
-        .equipo-local {
-            text-align: right;
-            font-weight: bold;
-        }
+.equipos {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 15px;
+}
 
-        .equipo-visitante {
-            text-align: left;
-            font-weight: bold;
-        }
+.equipo {
+    font-weight: bold;
+}
 
-        .resultado {
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            background-color: #F4F6F3;
-            border: 1px solid #D8C47A;
-            padding: 7px;
-            border-radius: 6px;
-            color: #176B3A;
-        }
+.local {
+    text-align: right;
+}
 
+.visitante {
+    text-align: left;
+}
 
-        /* =========================
-           TABLA DE POSICIONES
-        ========================= */
+.resultado {
+    font-size: 24px;
+    font-weight: bold;
+    white-space: nowrap;
+}
 
-        .tabla-contenedor {
-            overflow-x: auto;
-        }
+.hora {
+    color: #6b7280;
+    font-size: 13px;
+    margin-top: 8px;
+}
 
-        table {
-            width: 100%;
-            min-width: 700px;
-            border-collapse: collapse;
-        }
+/* ADMIN */
 
-        th {
-            background-color: #176B3A;
-            color: white;
-            padding: 10px 7px;
-            text-align: center;
-            border-bottom: 3px solid #C9A227;
-        }
+.admin-partido {
+    display: grid;
+    grid-template-columns: 1fr 70px 20px 70px 1fr;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 10px;
+}
 
-        td {
-            padding: 9px 7px;
-            border-bottom: 1px solid #DDE4DE;
-            text-align: center;
-        }
+.admin-partido input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    text-align: center;
+}
 
-        td:nth-child(2) {
-            text-align: left;
-            font-weight: bold;
-        }
+.admin-partido button {
+    border: none;
+    background: #16a34a;
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        tbody tr:hover {
-            background-color: #F4F6F3;
-        }
+.admin-partido button:hover {
+    background: #15803d;
+}
 
+.admin-equipo {
+    font-size: 14px;
+    font-weight: bold;
+}
 
-        /* =========================
-           SEGUNDA DIVISIÓN
-        ========================= */
+/* SELECT */
 
-        .proximamente {
-            color: #666;
-        }
+select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+    font-size: 15px;
+}
 
+/* RESPONSIVE */
 
-        /* =========================
-           PIE DE PÁGINA
-        ========================= */
+@media (max-width: 700px) {
 
-        footer {
-            text-align: center;
-            padding: 25px;
-            color: #176B3A;
-            font-weight: bold;
-        }
+    header h1 {
+        font-size: 24px;
+    }
 
+    .container {
+        padding: 10px;
+    }
 
-        /* =========================
-           CELULAR
-        ========================= */
+    .seccion {
+        padding: 15px;
+    }
 
-        @media (max-width: 600px) {
+    .equipos {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 8px;
+    }
 
-            header h1 {
-                font-size: 23px;
-            }
+    .local,
+    .visitante {
+        text-align: center;
+    }
 
-            .seccion {
-                padding: 14px;
-            }
+    .admin-partido {
+        grid-template-columns: 1fr 55px 15px 55px;
+    }
 
-            .partido {
-                grid-template-columns: 1fr 55px 1fr;
-                font-size: 13px;
-            }
+    .admin-partido .admin-equipo:last-of-type {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
 
-            .resultado {
-                font-size: 15px;
-            }
-
-            .boton {
-                padding: 9px 11px;
-                font-size: 13px;
-            }
-
-            #numeroFecha {
-                font-size: 18px;
-                min-width: 70px;
-            }
-
-        }
-
-    </style>
-
+    .admin-partido button {
+        grid-column: 1 / -1;
+    }
+}
+</style>
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     ENCABEZADO
-========================= -->
-
 <header>
-
-    <h1>🏆 Liga Regional Río Tercero</h1>
-
-    <p>Fútbol Regional</p>
-
+    <h1>🏆 Liga Regional</h1>
+    <p>Fixture · Resultados · Tabla de posiciones</p>
 </header>
 
+<nav>
+    <button onclick="mostrarSeccion('tabla')" id="btnTabla">Tabla</button>
+    <button onclick="mostrarSeccion('fixture')" id="btnFixture">Fixture</button>
+    <button onclick="mostrarSeccion('resultados')" id="btnResultados">Resultados</button>
+</nav>
 
+<div class="container">
 
-<div class="contenedor">
-
-
-    <!-- =========================
-         PRIMERA DIVISIÓN
-    ========================= -->
-
-    <section class="seccion">
-
-        <h2>⚽ Primera División</h2>
-
-        <h3 id="numeroFecha">
-            Fecha 1
-        </h3>
-
-
-        <div class="navegacion-fechas">
-
-            <button
-                class="boton"
-                id="anterior"
-                onclick="fechaAnterior()">
-
-                ◀ Anterior
-
-            </button>
-
-
-            <button
-                class="boton"
-                id="siguiente"
-                onclick="fechaSiguiente()">
-
-                Siguiente ▶
-
-            </button>
-
-        </div>
-
-
-        <div
-            class="partidos"
-            id="partidos">
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         TABLA
-    ========================= -->
-
-    <section class="seccion">
+    <!-- TABLA -->
+    <section id="tabla" class="seccion">
 
         <h2>📊 Tabla de posiciones</h2>
 
-        <div class="tabla-contenedor">
+        <div class="tabla-container">
 
             <table>
 
                 <thead>
-
                     <tr>
-
-                        <th>#</th>
-
+                        <th>Pos</th>
                         <th>Equipo</th>
-
-                        <th>PTS</th>
-
+                        <th>Pts</th>
                         <th>PJ</th>
-
                         <th>PG</th>
-
                         <th>PE</th>
-
                         <th>PP</th>
-
                         <th>GF</th>
-
                         <th>GC</th>
-
                         <th>DG</th>
-
                     </tr>
-
                 </thead>
 
-
-                <tbody id="tablaPosiciones">
-
-                </tbody>
+                <tbody id="tablaPosiciones"></tbody>
 
             </table>
 
@@ -381,41 +337,729 @@
     </section>
 
 
+    <!-- FIXTURE -->
+    <section id="fixture" class="seccion">
 
-    <!-- =========================
-         SEGUNDA DIVISIÓN
-    ========================= -->
+        <h2>📅 Fixture</h2>
 
-    <section class="seccion">
+        <div class="selector-fecha" id="selectorFechas"></div>
 
-        <h2>🥈 Segunda División</h2>
-
-        <p class="proximamente">
-
-            Próximamente tendremos la información
-            de Segunda División.
-
-        </p>
+        <div id="partidos"></div>
 
     </section>
 
 
+    <!-- RESULTADOS -->
+    <section id="resultados" class="seccion">
+
+        <h2>⚽ Cargar resultados</h2>
+
+        <p>
+            Seleccioná una fecha y cargá el resultado de cada partido.
+        </p>
+
+        <select id="fechaAdmin" onchange="mostrarAdmin()"></select>
+
+        <div id="adminPartidos" style="margin-top:20px;"></div>
+
+    </section>
+
 </div>
-
-
-
-<footer>
-
-    Liga Regional Río Tercero
-
-</footer>
-
 
 
 <script>
 
+/* =========================================================
+   EQUIPOS
+========================================================= */
+
+const equipos = [
+    "Juventud Agrario",
+    "Belgrano Football",
+    "Social y Deportivo VGB",
+    "Sp. Belgrano",
+    "Atlético Ascasubi",
+    "Dep. Independiente",
+    "9 de Julio (Río Tercero)",
+    "Atl. Independiente",
+    "Atl. Estudiantes",
+    "Atlético Río Tercero",
+    "Atl. Huracán",
+    "Dep. Huracán (Tancacha)",
+    "Vecinos Unidos",
+    "Recreativo Elenense",
+    "Talleres (Berrotarán)",
+    "Atlético Almafuerte"
+];
+
 
 /* =========================================================
+   FIXTURE COMPLETO
+========================================================= */
+
+const fixture = {
+
+1: [
+["Juventud Agrario","Belgrano Football"],
+["Social y Deportivo VGB","Sp. Belgrano"],
+["Atlético Ascasubi","Dep. Independiente"],
+["9 de Julio (Río Tercero)","Atl. Independiente"],
+["Atl. Estudiantes","Atlético Río Tercero"],
+["Atl. Huracán","Dep. Huracán (Tancacha)"],
+["Vecinos Unidos","Recreativo Elenense"],
+["Talleres (Berrotarán)","Atlético Almafuerte"]
+],
+
+2: [
+["Juventud Agrario","Dep. Independiente"],
+["Sp. Belgrano","Atl. Independiente"],
+["Belgrano Football","Atlético Río Tercero"],
+["Social y Deportivo VGB","Dep. Huracán (Tancacha)"],
+["Atlético Ascasubi","Recreativo Elenense"],
+["9 de Julio (Río Tercero)","Talleres (Berrotarán)"],
+["Atl. Estudiantes","Atlético Almafuerte"],
+["Vecinos Unidos","Atl. Huracán"]
+],
+
+3: [
+["Juventud Agrario","Vecinos Unidos"],
+["Atlético Almafuerte","Atl. Huracán"],
+["Talleres (Berrotarán)","Atl. Estudiantes"],
+["Recreativo Elenense","9 de Julio (Río Tercero)"],
+["Dep. Huracán (Tancacha)","Atlético Ascasubi"],
+["Atlético Río Tercero","Social y Deportivo VGB"],
+["Atl. Independiente","Belgrano Football"],
+["Dep. Independiente","Sp. Belgrano"]
+],
+
+4: [
+["Sp. Belgrano","Juventud Agrario"],
+["Belgrano Football","Dep. Independiente"],
+["Social y Deportivo VGB","Atl. Independiente"],
+["Atlético Ascasubi","Atlético Río Tercero"],
+["9 de Julio (Río Tercero)","Dep. Huracán (Tancacha)"],
+["Atl. Estudiantes","Recreativo Elenense"],
+["Atl. Huracán","Talleres (Berrotarán)"],
+["Vecinos Unidos","Atlético Almafuerte"]
+],
+
+5: [
+["Atlético Almafuerte","Juventud Agrario"],
+["Talleres (Berrotarán)","Vecinos Unidos"],
+["Recreativo Elenense","Atl. Huracán"],
+["Dep. Huracán (Tancacha)","Atl. Estudiantes"],
+["9 de Julio (Río Tercero)","Atlético Río Tercero"],
+["Atl. Independiente","Atlético Ascasubi"],
+["Dep. Independiente","Social y Deportivo VGB"],
+["Sp. Belgrano","Belgrano Football"]
+],
+
+6: [
+["Talleres (Berrotarán)","Juventud Agrario"],
+["Recreativo Elenense","Atlético Almafuerte"],
+["Dep. Huracán (Tancacha)","Vecinos Unidos"],
+["Atlético Río Tercero","Atl. Huracán"],
+["Atl. Estudiantes","Atl. Independiente"],
+["Dep. Independiente","9 de Julio (Río Tercero)"],
+["Sp. Belgrano","Atlético Ascasubi"],
+["Belgrano Football","Social y Deportivo VGB"]
+],
+
+7: [
+["Social y Deportivo VGB","Juventud Agrario"],
+["Atlético Ascasubi","Belgrano Football"],
+["9 de Julio (Río Tercero)","Sp. Belgrano"],
+["Dep. Independiente","Atl. Estudiantes"],
+["Atl. Independiente","Atl. Huracán"],
+["Vecinos Unidos","Atlético Río Tercero"],
+["Atlético Almafuerte","Dep. Huracán (Tancacha)"],
+["Talleres (Berrotarán)","Recreativo Elenense"]
+],
+
+8: [
+["Juventud Agrario","Recreativo Elenense"],
+["Dep. Huracán (Tancacha)","Talleres (Berrotarán)"],
+["Atlético Río Tercero","Atlético Almafuerte"],
+["Atl. Independiente","Vecinos Unidos"],
+["Dep. Independiente","Atl. Huracán"],
+["Sp. Belgrano","Atl. Estudiantes"],
+["Belgrano Football","9 de Julio (Río Tercero)"],
+["Social y Deportivo VGB","Atlético Ascasubi"]
+],
+
+9: [
+["Atlético Ascasubi","Juventud Agrario"],
+["9 de Julio (Río Tercero)","Social y Deportivo VGB"],
+["Atl. Estudiantes","Belgrano Football"],
+["Atl. Huracán","Sp. Belgrano"],
+["Dep. Independiente","Vecinos Unidos"],
+["Atlético Almafuerte","Atl. Independiente"],
+["Atlético Río Tercero","Talleres (Berrotarán)"],
+["Recreativo Elenense","Dep. Huracán (Tancacha)"]
+],
+
+10: [
+["Juventud Agrario","Dep. Huracán (Tancacha)"],
+["Recreativo Elenense","Atlético Río Tercero"],
+["Atl. Independiente","Talleres (Berrotarán)"],
+["Dep. Independiente","Atlético Almafuerte"],
+["Sp. Belgrano","Vecinos Unidos"],
+["Belgrano Football","Atl. Huracán"],
+["Social y Deportivo VGB","Atl. Estudiantes"],
+["Atlético Ascasubi","9 de Julio (Río Tercero)"]
+],
+
+11: [
+["Atl. Independiente","Atl. Estudiantes"],
+["Atlético Río Tercero","9 de Julio (Río Tercero)"],
+["Atlético Ascasubi","Dep. Huracán (Tancacha)"],
+["Social y Deportivo VGB","Recreativo Elenense"],
+["Talleres (Berrotarán)","Belgrano Football"],
+["Atlético Almafuerte","Sp. Belgrano"],
+["Vecinos Unidos","Dep. Independiente"],
+["Juventud Agrario","Atl. Huracán"]
+],
+
+12: [
+["9 de Julio (Río Tercero)","Juventud Agrario"],
+["Atl. Estudiantes","Atlético Ascasubi"],
+["Atl. Huracán","Social y Deportivo VGB"],
+["Vecinos Unidos","Belgrano Football"],
+["Sp. Belgrano","Atlético Almafuerte"],
+["Talleres (Berrotarán)","Dep. Independiente"],
+["Recreativo Elenense","Atl. Independiente"],
+["Dep. Huracán (Tancacha)","Atlético Río Tercero"]
+],
+
+13: [
+["Juventud Agrario","Atlético Río Tercero"],
+["Dep. Huracán (Tancacha)","Atl. Independiente"],
+["Dep. Independiente","Recreativo Elenense"],
+["Sp. Belgrano","Talleres (Berrotarán)"],
+["Belgrano Football","Atlético Almafuerte"],
+["Vecinos Unidos","Social y Deportivo VGB"],
+["Atl. Huracán","Atlético Ascasubi"],
+["9 de Julio (Río Tercero)","Atl. Estudiantes"]
+],
+
+14: [
+["Atl. Estudiantes","Juventud Agrario"],
+["Atl. Huracán","9 de Julio (Río Tercero)"],
+["Vecinos Unidos","Atlético Ascasubi"],
+["Atlético Almafuerte","Social y Deportivo VGB"],
+["Belgrano Football","Talleres (Berrotarán)"],
+["Recreativo Elenense","Sp. Belgrano"],
+["Dep. Huracán (Tancacha)","Dep. Independiente"],
+["Atlético Río Tercero","Atl. Independiente"]
+],
+
+15: [
+["Atl. Independiente","Juventud Agrario"],
+["Dep. Independiente","Atlético Río Tercero"],
+["Sp. Belgrano","Dep. Huracán (Tancacha)"],
+["Belgrano Football","Recreativo Elenense"],
+["Social y Deportivo VGB","Talleres (Berrotarán)"],
+["Atlético Ascasubi","Atlético Almafuerte"],
+["9 de Julio (Río Tercero)","Vecinos Unidos"],
+["Atl. Estudiantes","Atl. Huracán"]
+],
+
+16: [
+["Atl. Huracán","Juventud Agrario"],
+["Vecinos Unidos","Atl. Estudiantes"],
+["Atlético Almafuerte","9 de Julio (Río Tercero)"],
+["Talleres (Berrotarán)","Atlético Ascasubi"],
+["Recreativo Elenense","Social y Deportivo VGB"],
+["Dep. Huracán (Tancacha)","Belgrano Football"],
+["Atlético Río Tercero","Sp. Belgrano"],
+["Atl. Independiente","Dep. Independiente"]
+]
+
+};
+
+
+/* =========================================================
+   RESULTADOS
+========================================================= */
+
+let resultados = JSON.parse(
+    localStorage.getItem("resultadosLiga")
+) || {};
+
+
+/* =========================================================
+   MOSTRAR SECCIONES
+========================================================= */
+
+function mostrarSeccion(seccion) {
+
+    document.getElementById("tabla").style.display = "none";
+    document.getElementById("fixture").style.display = "none";
+    document.getElementById("resultados").style.display = "none";
+
+    document.getElementById(seccion).style.display = "block";
+
+    document.getElementById("btnTabla").classList.remove("active");
+    document.getElementById("btnFixture").classList.remove("active");
+    document.getElementById("btnResultados").classList.remove("active");
+
+    if (seccion === "tabla") {
+        document.getElementById("btnTabla").classList.add("active");
+    }
+
+    if (seccion === "fixture") {
+        document.getElementById("btnFixture").classList.add("active");
+    }
+
+    if (seccion === "resultados") {
+        document.getElementById("btnResultados").classList.add("active");
+    }
+}
+
+
+/* =========================================================
+   SELECTOR DE FECHAS
+========================================================= */
+
+function crearSelectorFechas() {
+
+    const contenedor = document.getElementById("selectorFechas");
+
+    for (let fecha = 1; fecha <= 16; fecha++) {
+
+        const boton = document.createElement("button");
+
+        boton.textContent = "Fecha " + fecha;
+
+        boton.onclick = function() {
+            mostrarFecha(fecha);
+        };
+
+        if (fecha === 1) {
+            boton.classList.add("active");
+        }
+
+        contenedor.appendChild(boton);
+    }
+
+}
+
+
+/* =========================================================
+   MOSTRAR FIXTURE
+========================================================= */
+
+function mostrarFecha(fecha) {
+
+    const contenedor = document.getElementById("partidos");
+
+    contenedor.innerHTML = "";
+
+    document.querySelectorAll("#selectorFechas button")
+        .forEach(boton => boton.classList.remove("active"));
+
+    document.querySelectorAll("#selectorFechas button")[fecha - 1]
+        .classList.add("active");
+
+
+    fixture[fecha].forEach((partido, indice) => {
+
+        const local = partido[0];
+        const visitante = partido[1];
+
+        const id = fecha + "-" + indice;
+
+        const resultado = resultados[id];
+
+        let marcador = "-";
+
+        let estado = "Pendiente";
+        let claseEstado = "";
+
+        if (resultado) {
+
+            marcador =
+                resultado.golesLocal +
+                " - " +
+                resultado.golesVisitante;
+
+            estado = "Finalizado";
+            claseEstado = "finalizado";
+
+        }
+
+
+        const div = document.createElement("div");
+
+        div.className = "partido";
+
+        div.innerHTML = `
+
+            <div class="partido-header">
+
+                <strong>Partido ${indice + 1}</strong>
+
+                <span class="estado ${claseEstado}">
+                    ${estado}
+                </span>
+
+            </div>
+
+            <div class="equipos">
+
+                <div class="equipo local">
+                    ${local}
+                </div>
+
+                <div class="resultado">
+                    ${marcador}
+                </div>
+
+                <div class="equipo visitante">
+                    ${visitante}
+                </div>
+
+            </div>
+
+        `;
+
+        contenedor.appendChild(div);
+
+    });
+
+}
+
+
+/* =========================================================
+   SELECTOR ADMIN
+========================================================= */
+
+function crearSelectorAdmin() {
+
+    const select = document.getElementById("fechaAdmin");
+
+    for (let fecha = 1; fecha <= 16; fecha++) {
+
+        const option = document.createElement("option");
+
+        option.value = fecha;
+        option.textContent = "Fecha " + fecha;
+
+        select.appendChild(option);
+
+    }
+
+}
+
+
+/* =========================================================
+   ADMINISTRAR RESULTADOS
+========================================================= */
+
+function mostrarAdmin() {
+
+    const fecha =
+        Number(document.getElementById("fechaAdmin").value);
+
+    const contenedor =
+        document.getElementById("adminPartidos");
+
+    contenedor.innerHTML = "";
+
+
+    fixture[fecha].forEach((partido, indice) => {
+
+        const local = partido[0];
+        const visitante = partido[1];
+
+        const id = fecha + "-" + indice;
+
+        const resultado = resultados[id] || {};
+
+        const div = document.createElement("div");
+
+        div.className = "admin-partido";
+
+        div.innerHTML = `
+
+            <div class="admin-equipo">
+                ${local}
+            </div>
+
+            <input
+                type="number"
+                min="0"
+                id="local-${id}"
+                value="${resultado.golesLocal ?? ""}"
+                placeholder="0"
+            >
+
+            <strong>-</strong>
+
+            <input
+                type="number"
+                min="0"
+                id="visitante-${id}"
+                value="${resultado.golesVisitante ?? ""}"
+                placeholder="0"
+            >
+
+            <div class="admin-equipo">
+                ${visitante}
+            </div>
+
+            <button onclick="guardarResultado(${fecha}, ${indice})">
+                Guardar
+            </button>
+
+        `;
+
+        contenedor.appendChild(div);
+
+    });
+
+}
+
+
+/* =========================================================
+   GUARDAR RESULTADO
+========================================================= */
+
+function guardarResultado(fecha, indice) {
+
+    const id = fecha + "-" + indice;
+
+    const golesLocal =
+        document.getElementById("local-" + id).value;
+
+    const golesVisitante =
+        document.getElementById("visitante-" + id).value;
+
+
+    if (golesLocal === "" || golesVisitante === "") {
+
+        alert("Completá los dos resultados.");
+
+        return;
+    }
+
+
+    resultados[id] = {
+
+        golesLocal: Number(golesLocal),
+
+        golesVisitante: Number(golesVisitante)
+
+    };
+
+
+    localStorage.setItem(
+        "resultadosLiga",
+        JSON.stringify(resultados)
+    );
+
+
+    alert("Resultado guardado correctamente.");
+
+    mostrarAdmin();
+
+    mostrarFecha(fecha);
+
+    actualizarTabla();
+
+}
+
+
+/* =========================================================
+   TABLA DE POSICIONES
+========================================================= */
+
+function actualizarTabla() {
+
+    let tabla = {};
+
+
+    equipos.forEach(equipo => {
+
+        tabla[equipo] = {
+
+            equipo: equipo,
+
+            pts: 0,
+
+            pj: 0,
+
+            pg: 0,
+
+            pe: 0,
+
+            pp: 0,
+
+            gf: 0,
+
+            gc: 0,
+
+            dg: 0
+
+        };
+
+    });
+
+
+    Object.keys(resultados).forEach(id => {
+
+        const partes = id.split("-");
+
+        const fecha = Number(partes[0]);
+
+        const indice = Number(partes[1]);
+
+        const partido = fixture[fecha][indice];
+
+        const local = partido[0];
+
+        const visitante = partido[1];
+
+        const golesLocal =
+            resultados[id].golesLocal;
+
+        const golesVisitante =
+            resultados[id].golesVisitante;
+
+
+        tabla[local].pj++;
+        tabla[visitante].pj++;
+
+
+        tabla[local].gf += golesLocal;
+        tabla[local].gc += golesVisitante;
+
+        tabla[visitante].gf += golesVisitante;
+        tabla[visitante].gc += golesLocal;
+
+
+        if (golesLocal > golesVisitante) {
+
+            tabla[local].pg++;
+            tabla[local].pts += 3;
+
+            tabla[visitante].pp++;
+
+        }
+
+        else if (golesLocal < golesVisitante) {
+
+            tabla[visitante].pg++;
+            tabla[visitante].pts += 3;
+
+            tabla[local].pp++;
+
+        }
+
+        else {
+
+            tabla[local].pe++;
+            tabla[visitante].pe++;
+
+            tabla[local].pts++;
+            tabla[visitante].pts++;
+
+        }
+
+    });
+
+
+    Object.values(tabla).forEach(equipo => {
+
+        equipo.dg = equipo.gf - equipo.gc;
+
+    });
+
+
+    const posiciones =
+        Object.values(tabla).sort((a,b) => {
+
+            if (b.pts !== a.pts)
+                return b.pts - a.pts;
+
+            if (b.dg !== a.dg)
+                return b.dg - a.dg;
+
+            if (b.gf !== a.gf)
+                return b.gf - a.gf;
+
+            return a.equipo.localeCompare(b.equipo);
+
+        });
+
+
+    const tbody =
+        document.getElementById("tablaPosiciones");
+
+    tbody.innerHTML = "";
+
+
+    posiciones.forEach((equipo, indice) => {
+
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+
+            <td class="posicion">
+                ${indice + 1}
+            </td>
+
+            <td>
+                ${equipo.equipo}
+            </td>
+
+            <td>
+                <strong>${equipo.pts}</strong>
+            </td>
+
+            <td>${equipo.pj}</td>
+
+            <td>${equipo.pg}</td>
+
+            <td>${equipo.pe}</td>
+
+            <td>${equipo.pp}</td>
+
+            <td>${equipo.gf}</td>
+
+            <td>${equipo.gc}</td>
+
+            <td>${equipo.dg}</td>
+
+        `;
+
+        tbody.appendChild(tr);
+
+    });
+
+}
+
+
+/* =========================================================
+   INICIAR
+========================================================= */
+
+crearSelectorFechas();
+
+crearSelectorAdmin();
+
+mostrarFecha(1);
+
+mostrarAdmin();
+
+actualizarTabla();
+
+mostrarSeccion("tabla");
+
+</script>
+
+</body>
+</html>
    EQUIPOS
 ========================================================= */
 
