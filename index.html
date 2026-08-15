@@ -1,88 +1,134 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Liga Regional</title>
 
+
 <!-- SUPABASE -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <style>
+
+/* =========================================================
+   GENERAL
+========================================================= */
 
 * {
     box-sizing: border-box;
 }
 
 body {
+
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background: #f3f4f6;
+
     color: #111827;
 }
 
-/* =========================
+
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 header {
+
     background: #111827;
+
     color: white;
+
     text-align: center;
+
     padding: 25px 10px;
+
 }
 
 header h1 {
+
     margin: 0;
+
     font-size: 30px;
+
 }
 
 header p {
+
     margin: 8px 0 0;
+
     color: #d1d5db;
+
 }
 
-/* =========================
+
+/* =========================================================
    BOTON MENU
-========================= */
+========================================================= */
 
 .menu-btn {
+
     position: fixed;
+
     right: 20px;
+
     top: 20px;
 
     width: 50px;
+
     height: 50px;
 
     border: none;
+
     border-radius: 10px;
 
     background: #2563eb;
+
     color: white;
 
     font-size: 24px;
+
     cursor: pointer;
 
     z-index: 1001;
+
 }
 
 .menu-btn:hover {
+
     background: #1d4ed8;
+
 }
 
-/* =========================
+
+/* =========================================================
    MENU LATERAL
-========================= */
+========================================================= */
 
 .menu-lateral {
+
     position: fixed;
 
     top: 0;
+
     right: -300px;
 
     width: 300px;
+
     height: 100vh;
 
     background: #111827;
@@ -95,20 +141,30 @@ header p {
 
     z-index: 1000;
 
-    box-shadow: -5px 0 15px rgba(0,0,0,0.25);
+    box-shadow:
+        -5px 0 15px rgba(0,0,0,0.25);
+
 }
 
 .menu-lateral.abierto {
+
     right: 0;
+
 }
 
 .menu-lateral h2 {
+
     margin-top: 0;
-    border-bottom: 1px solid #374151;
+
+    border-bottom:
+        1px solid #374151;
+
     padding-bottom: 15px;
+
 }
 
 .menu-opcion {
+
     width: 100%;
 
     padding: 15px;
@@ -130,41 +186,54 @@ header p {
     text-align: left;
 
     cursor: pointer;
+
 }
 
 .menu-opcion:hover {
+
     background: #2563eb;
+
 }
 
 .menu-opcion.activo {
+
     background: #2563eb;
+
 }
 
-/* =========================
+
+/* =========================================================
    OVERLAY
-========================= */
+========================================================= */
 
 .overlay {
+
     position: fixed;
 
     inset: 0;
 
-    background: rgba(0,0,0,0.4);
+    background:
+        rgba(0,0,0,0.4);
 
     display: none;
 
     z-index: 999;
+
 }
 
 .overlay.visible {
+
     display: block;
+
 }
 
-/* =========================
-   NAVEGACION
-========================= */
+
+/* =========================================================
+   NAV
+========================================================= */
 
 nav {
+
     background: #1f2937;
 
     display: flex;
@@ -176,9 +245,11 @@ nav {
     padding: 12px;
 
     flex-wrap: wrap;
+
 }
 
 nav button {
+
     background: #374151;
 
     color: white;
@@ -192,26 +263,33 @@ nav button {
     cursor: pointer;
 
     font-weight: bold;
+
 }
 
 nav button:hover,
 nav button.active {
+
     background: #2563eb;
+
 }
 
-/* =========================
+
+/* =========================================================
    CONTENEDOR
-========================= */
+========================================================= */
 
 .container {
+
     max-width: 1100px;
 
     margin: auto;
 
     padding: 20px;
+
 }
 
 .seccion {
+
     background: white;
 
     border-radius: 10px;
@@ -220,18 +298,18 @@ nav button.active {
 
     margin-bottom: 20px;
 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.08);
+
 }
 
-h2 {
-    margin-top: 0;
-}
 
-/* =========================
+/* =========================================================
    CATEGORIA
-========================= */
+========================================================= */
 
 .categoria-actual {
+
     display: inline-block;
 
     background: #2563eb;
@@ -247,25 +325,32 @@ h2 {
     font-weight: bold;
 
     margin-bottom: 15px;
+
 }
 
-/* =========================
+
+/* =========================================================
    TABLA
-========================= */
+========================================================= */
 
 .tabla-container {
+
     overflow-x: auto;
+
 }
 
 table {
+
     width: 100%;
 
     border-collapse: collapse;
 
     min-width: 650px;
+
 }
 
 th {
+
     background: #111827;
 
     color: white;
@@ -273,35 +358,47 @@ th {
     padding: 10px;
 
     font-size: 14px;
+
 }
 
 td {
+
     padding: 10px;
 
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom:
+        1px solid #e5e7eb;
 
     text-align: center;
+
 }
 
 td:nth-child(2) {
+
     text-align: left;
 
     font-weight: bold;
+
 }
 
 tr:hover {
+
     background: #f9fafb;
+
 }
 
 .posicion {
+
     font-weight: bold;
+
 }
 
-/* =========================
+
+/* =========================================================
    FECHAS
-========================= */
+========================================================= */
 
 .selector-fecha {
+
     display: flex;
 
     gap: 8px;
@@ -309,9 +406,11 @@ tr:hover {
     flex-wrap: wrap;
 
     margin-bottom: 20px;
+
 }
 
 .selector-fecha button {
+
     border: none;
 
     background: #e5e7eb;
@@ -321,20 +420,25 @@ tr:hover {
     border-radius: 6px;
 
     cursor: pointer;
+
 }
 
 .selector-fecha button:hover,
 .selector-fecha button.active {
+
     background: #2563eb;
 
     color: white;
+
 }
 
-/* =========================
+
+/* =========================================================
    PARTIDOS
-========================= */
+========================================================= */
 
 .partido {
+
     border: 1px solid #e5e7eb;
 
     border-radius: 8px;
@@ -344,9 +448,11 @@ tr:hover {
     margin-bottom: 12px;
 
     background: white;
+
 }
 
 .partido-header {
+
     display: flex;
 
     justify-content: space-between;
@@ -354,9 +460,11 @@ tr:hover {
     align-items: center;
 
     margin-bottom: 12px;
+
 }
 
 .estado {
+
     font-size: 12px;
 
     font-weight: bold;
@@ -366,190 +474,363 @@ tr:hover {
     border-radius: 5px;
 
     background: #e5e7eb;
+
 }
 
 .estado.finalizado {
+
     background: #dcfce7;
 
     color: #166534;
+
 }
 
 .equipos {
+
     display: grid;
 
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns:
+        1fr auto 1fr;
 
     align-items: center;
 
     gap: 15px;
+
 }
 
 .equipo {
+
     font-weight: bold;
+
 }
 
 .local {
+
     text-align: right;
+
 }
 
 .visitante {
+
     text-align: left;
+
 }
 
 .resultado {
+
     font-size: 24px;
 
     font-weight: bold;
 
     white-space: nowrap;
+
 }
 
-/* =========================
-   ADMIN
-========================= */
+.horario {
 
-select {
-    padding: 10px;
+    text-align: center;
+
+    margin-top: 10px;
+
+    font-size: 13px;
+
+    color: #6b7280;
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+.login-box {
+
+    max-width: 450px;
+
+    margin: auto;
+
+    padding: 20px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    background: #f9fafb;
+
+}
+
+.login-box input {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-bottom: 10px;
+
+    border:
+        1px solid #d1d5db;
 
     border-radius: 6px;
 
-    border: 1px solid #d1d5db;
-
     font-size: 15px;
+
 }
 
+.login-box button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+.login-box button:hover {
+
+    background: #1d4ed8;
+
+}
+
+#usuarioActual {
+
+    margin-bottom: 15px;
+
+    padding: 10px;
+
+    background: #dcfce7;
+
+    color: #166534;
+
+    border-radius: 6px;
+
+}
+
+
+/* =========================================================
+   ADMIN
+========================================================= */
+
 .admin-partido {
+
     display: grid;
 
-    grid-template-columns: 1fr 70px 20px 70px 1fr 80px;
+    grid-template-columns:
+        1fr 70px 20px 70px 1fr auto;
 
     gap: 8px;
 
     align-items: center;
 
     margin-bottom: 10px;
+
 }
 
 .admin-partido input {
+
     width: 100%;
 
     padding: 8px;
 
-    border: 1px solid #d1d5db;
+    border:
+        1px solid #d1d5db;
 
     border-radius: 5px;
 
     text-align: center;
+
 }
 
 .admin-partido button {
+
     border: none;
 
     background: #16a34a;
 
     color: white;
 
-    padding: 8px;
+    padding: 8px 12px;
 
     border-radius: 5px;
 
     cursor: pointer;
+
 }
 
 .admin-partido button:hover {
+
     background: #15803d;
+
 }
 
 .admin-equipo {
+
     font-size: 14px;
 
     font-weight: bold;
+
 }
 
-/* =========================
+select {
+
+    padding: 10px;
+
+    border-radius: 6px;
+
+    border:
+        1px solid #d1d5db;
+
+    font-size: 15px;
+
+}
+
+
+/* =========================================================
+   BOTON CERRAR SESION
+========================================================= */
+
+.btn-logout {
+
+    background: #dc2626 !important;
+
+    margin-top: 10px;
+
+}
+
+.btn-logout:hover {
+
+    background: #b91c1c !important;
+
+}
+
+
+/* =========================================================
    MENSAJES
-========================= */
+========================================================= */
 
 .mensaje {
-    padding: 15px;
 
-    border-radius: 8px;
+    padding: 12px;
 
-    background: #f3f4f6;
+    border-radius: 6px;
 
-    margin-bottom: 15px;
+    margin-top: 10px;
+
+    display: none;
+
 }
 
 .mensaje.error {
+
+    display: block;
+
     background: #fee2e2;
 
     color: #991b1b;
+
 }
 
 .mensaje.exito {
+
+    display: block;
+
     background: #dcfce7;
 
     color: #166534;
+
 }
 
-/* =========================
+
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
 @media (max-width: 700px) {
 
     header h1 {
+
         font-size: 24px;
+
     }
 
     .container {
+
         padding: 10px;
+
     }
 
     .seccion {
+
         padding: 15px;
+
     }
 
     .equipos {
+
         grid-template-columns: 1fr;
 
         text-align: center;
 
         gap: 8px;
+
     }
 
     .local,
     .visitante {
+
         text-align: center;
+
     }
 
     .admin-partido {
+
         grid-template-columns:
-        1fr 55px 15px 55px;
+            1fr 55px 15px 55px;
+
     }
 
     .admin-partido button {
-        grid-column: 1 / -1;
+
+        grid-column:
+            1 / -1;
+
     }
 
     .admin-equipo {
+
         text-align: center;
+
     }
 
     .menu-lateral {
+
         width: 280px;
+
     }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- =====================================================
      BOTON MENU
-========================= -->
+===================================================== -->
 
 <button
     class="menu-btn"
@@ -559,9 +840,6 @@ select {
 
 </button>
 
-<!-- =========================
-     OVERLAY
-========================= -->
 
 <div
     id="overlay"
@@ -569,9 +847,10 @@ select {
     onclick="cerrarMenu()">
 </div>
 
-<!-- =========================
-     MENU LATERAL
-========================= -->
+
+<!-- =====================================================
+     MENU
+===================================================== -->
 
 <div
     id="menuLateral"
@@ -599,9 +878,10 @@ select {
 
 </div>
 
-<!-- =========================
+
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header>
 
@@ -613,9 +893,10 @@ select {
 
 </header>
 
-<!-- =========================
+
+<!-- =====================================================
      NAVEGACION
-========================= -->
+===================================================== -->
 
 <nav>
 
@@ -643,13 +924,23 @@ select {
 
     </button>
 
+    <button
+        onclick="mostrarSeccion('admin')"
+        id="btnAdmin">
+
+        🔐 Administración
+
+    </button>
+
 </nav>
+
 
 <div class="container">
 
-<!-- =========================
+
+<!-- =====================================================
      TABLA
-========================= -->
+===================================================== -->
 
 <section
     id="tabla"
@@ -667,8 +958,6 @@ select {
         📊 Tabla de posiciones
     </h2>
 
-    <div id="mensajeTabla"></div>
-
     <div class="tabla-container">
 
         <table>
@@ -678,14 +967,23 @@ select {
                 <tr>
 
                     <th>Pos</th>
+
                     <th>Equipo</th>
+
                     <th>Pts</th>
+
                     <th>PJ</th>
+
                     <th>PG</th>
+
                     <th>PE</th>
+
                     <th>PP</th>
+
                     <th>GF</th>
+
                     <th>GC</th>
+
                     <th>DG</th>
 
                 </tr>
@@ -702,13 +1000,15 @@ select {
 
 </section>
 
-<!-- =========================
+
+<!-- =====================================================
      FIXTURE
-========================= -->
+===================================================== -->
 
 <section
     id="fixture"
-    class="seccion">
+    class="seccion"
+    style="display:none;">
 
     <div
         id="categoriaFixture"
@@ -727,19 +1027,21 @@ select {
         class="selector-fecha">
     </div>
 
-    <div
-        id="partidos">
+    <div id="partidos">
+
     </div>
 
 </section>
 
-<!-- =========================
+
+<!-- =====================================================
      RESULTADOS
-========================= -->
+===================================================== -->
 
 <section
     id="resultados"
-    class="seccion">
+    class="seccion"
+    style="display:none;">
 
     <div
         id="categoriaResultados"
@@ -750,32 +1052,125 @@ select {
     </div>
 
     <h2>
-        ⚽ Cargar resultados
+        ⚽ Resultados
     </h2>
 
-    <p>
-        Seleccioná una fecha y cargá los resultados.
-    </p>
-
-    <select
-        id="fechaAdmin"
-        onchange="mostrarAdmin()">
-    </select>
-
     <div
-        id="adminMensaje">
-    </div>
+        id="resultadosPublicos">
 
-    <div
-        id="adminPartidos"
-        style="margin-top:20px;">
     </div>
 
 </section>
 
+
+<!-- =====================================================
+     ADMINISTRACION
+===================================================== -->
+
+<section
+    id="admin"
+    class="seccion"
+    style="display:none;">
+
+    <div class="categoria-actual">
+
+        Administración
+
+    </div>
+
+    <h2>
+        🔐 Cargar resultados
+    </h2>
+
+
+    <!-- LOGIN -->
+
+    <div
+        id="loginContainer"
+        class="login-box">
+
+        <h3>
+            Iniciar sesión
+        </h3>
+
+        <p>
+            Solo el administrador puede modificar resultados.
+        </p>
+
+        <input
+            type="email"
+            id="emailLogin"
+            placeholder="Correo electrónico"
+        >
+
+        <input
+            type="password"
+            id="passwordLogin"
+            placeholder="Contraseña"
+        >
+
+        <button
+            onclick="iniciarSesion()">
+
+            Ingresar
+
+        </button>
+
+        <div
+            id="mensajeLogin"
+            class="mensaje">
+        </div>
+
+    </div>
+
+
+    <!-- ADMIN LOGUEADO -->
+
+    <div
+        id="adminContainer"
+        style="display:none;">
+
+        <div id="usuarioActual">
+
+        </div>
+
+        <button
+            class="login-box button btn-logout"
+            onclick="cerrarSesion()">
+
+            Cerrar sesión
+
+        </button>
+
+        <br><br>
+
+
+        <h3>
+            Cargar resultados
+        </h3>
+
+        <select
+            id="fechaAdmin"
+            onchange="mostrarAdmin()">
+
+        </select>
+
+        <div
+            id="adminPartidos"
+            style="margin-top:20px;">
+
+        </div>
+
+    </div>
+
+</section>
+
+
 </div>
 
+
 <script>
+
 
 /* =========================================================
    SUPABASE
@@ -785,10 +1180,11 @@ const SUPABASE_URL =
     "https://vxncfnsysnrrewhbbxsc.supabase.co";
 
 const SUPABASE_KEY =
-    sb_publishable_UPVv4BOH2_VrgyLLf2xMNQ_2t1Ki6Bd;
+    "sb_publishable_UPVv4BOH2_VrgyLLf2xMNQ_2t1Ki6Bd";
+
 
 const supabaseClient =
-    supabase.createClient(
+    window.supabase.createClient(
         SUPABASE_URL,
         SUPABASE_KEY
     );
@@ -821,6 +1217,191 @@ const equipos = [
 
 
 /* =========================================================
+   FIXTURE
+========================================================= */
+
+const fixture = {
+
+1: [
+["Juventud Agrario","Belgrano Football"],
+["Social y Deportivo VGB","Sp. Belgrano"],
+["Atlético Ascasubi","Dep. Independiente"],
+["9 de Julio (Río Tercero)","Atl. Independiente"],
+["Atl. Estudiantes","Atlético Río Tercero"],
+["Atl. Huracán","Dep. Huracán (Tancacha)"],
+["Vecinos Unidos","Recreativo Elenense"],
+["Talleres (Berrotarán)","Atlético Almafuerte"]
+],
+
+2: [
+["Juventud Agrario","Dep. Independiente"],
+["Sp. Belgrano","Atl. Independiente"],
+["Belgrano Football","Atlético Río Tercero"],
+["Social y Deportivo VGB","Dep. Huracán (Tancacha)"],
+["Atlético Ascasubi","Recreativo Elenense"],
+["9 de Julio (Río Tercero)","Talleres (Berrotarán)"],
+["Atl. Estudiantes","Atlético Almafuerte"],
+["Vecinos Unidos","Atl. Huracán"]
+],
+
+3: [
+["Juventud Agrario","Vecinos Unidos"],
+["Atlético Almafuerte","Atl. Huracán"],
+["Talleres (Berrotarán)","Atl. Estudiantes"],
+["Recreativo Elenense","9 de Julio (Río Tercero)"],
+["Dep. Huracán (Tancacha)","Atlético Ascasubi"],
+["Atlético Río Tercero","Social y Deportivo VGB"],
+["Atl. Independiente","Belgrano Football"],
+["Dep. Independiente","Sp. Belgrano"]
+],
+
+4: [
+["Sp. Belgrano","Juventud Agrario"],
+["Belgrano Football","Dep. Independiente"],
+["Social y Deportivo VGB","Atl. Independiente"],
+["Atlético Ascasubi","Atlético Río Tercero"],
+["9 de Julio (Río Tercero)","Dep. Huracán (Tancacha)"],
+["Atl. Estudiantes","Recreativo Elenense"],
+["Atl. Huracán","Talleres (Berrotarán)"],
+["Vecinos Unidos","Atlético Almafuerte"]
+],
+
+5: [
+["Atlético Almafuerte","Juventud Agrario"],
+["Talleres (Berrotarán)","Vecinos Unidos"],
+["Recreativo Elenense","Atl. Huracán"],
+["Dep. Huracán (Tancacha)","Atl. Estudiantes"],
+["9 de Julio (Río Tercero)","Atlético Río Tercero"],
+["Atl. Independiente","Atlético Ascasubi"],
+["Dep. Independiente","Social y Deportivo VGB"],
+["Sp. Belgrano","Belgrano Football"]
+],
+
+6: [
+["Talleres (Berrotarán)","Juventud Agrario"],
+["Recreativo Elenense","Atlético Almafuerte"],
+["Dep. Huracán (Tancacha)","Vecinos Unidos"],
+["Atlético Río Tercero","Atl. Huracán"],
+["Atl. Estudiantes","Atl. Independiente"],
+["Dep. Independiente","9 de Julio (Río Tercero)"],
+["Sp. Belgrano","Atlético Ascasubi"],
+["Belgrano Football","Social y Deportivo VGB"]
+],
+
+7: [
+["Social y Deportivo VGB","Juventud Agrario"],
+["Atlético Ascasubi","Belgrano Football"],
+["9 de Julio (Río Tercero)","Sp. Belgrano"],
+["Dep. Independiente","Atl. Estudiantes"],
+["Atl. Independiente","Atl. Huracán"],
+["Vecinos Unidos","Atlético Río Tercero"],
+["Atlético Almafuerte","Dep. Huracán (Tancacha)"],
+["Talleres (Berrotarán)","Recreativo Elenense"]
+],
+
+8: [
+["Juventud Agrario","Recreativo Elenense"],
+["Dep. Huracán (Tancacha)","Talleres (Berrotarán)"],
+["Atlético Río Tercero","Atlético Almafuerte"],
+["Atl. Independiente","Vecinos Unidos"],
+["Dep. Independiente","Atl. Huracán"],
+["Sp. Belgrano","Atl. Estudiantes"],
+["Belgrano Football","9 de Julio (Río Tercero)"],
+["Social y Deportivo VGB","Atlético Ascasubi"]
+],
+
+9: [
+["Atlético Ascasubi","Juventud Agrario"],
+["9 de Julio (Río Tercero)","Social y Deportivo VGB"],
+["Atl. Estudiantes","Belgrano Football"],
+["Atl. Huracán","Sp. Belgrano"],
+["Dep. Independiente","Vecinos Unidos"],
+["Atlético Almafuerte","Atl. Independiente"],
+["Atlético Río Tercero","Talleres (Berrotarán)"],
+["Recreativo Elenense","Dep. Huracán (Tancacha)"]
+],
+
+10: [
+["Juventud Agrario","Dep. Huracán (Tancacha)"],
+["Recreativo Elenense","Atlético Río Tercero"],
+["Atl. Independiente","Talleres (Berrotarán)"],
+["Dep. Independiente","Atlético Almafuerte"],
+["Sp. Belgrano","Vecinos Unidos"],
+["Belgrano Football","Atl. Huracán"],
+["Social y Deportivo VGB","Atl. Estudiantes"],
+["Atlético Ascasubi","9 de Julio (Río Tercero)"]
+],
+
+11: [
+["Atl. Independiente","Atl. Estudiantes"],
+["Atlético Río Tercero","9 de Julio (Río Tercero)"],
+["Atlético Ascasubi","Dep. Huracán (Tancacha)"],
+["Social y Deportivo VGB","Recreativo Elenense"],
+["Talleres (Berrotarán)","Belgrano Football"],
+["Atlético Almafuerte","Sp. Belgrano"],
+["Vecinos Unidos","Dep. Independiente"],
+["Juventud Agrario","Atl. Huracán"]
+],
+
+12: [
+["9 de Julio (Río Tercero)","Juventud Agrario"],
+["Atl. Estudiantes","Atlético Ascasubi"],
+["Atl. Huracán","Social y Deportivo VGB"],
+["Vecinos Unidos","Belgrano Football"],
+["Sp. Belgrano","Atlético Almafuerte"],
+["Talleres (Berrotarán)","Dep. Independiente"],
+["Recreativo Elenense","Atl. Independiente"],
+["Dep. Huracán (Tancacha)","Atlético Río Tercero"]
+],
+
+13: [
+["Juventud Agrario","Atlético Río Tercero"],
+["Dep. Huracán (Tancacha)","Atl. Independiente"],
+["Dep. Independiente","Recreativo Elenense"],
+["Sp. Belgrano","Talleres (Berrotarán)"],
+["Belgrano Football","Atlético Almafuerte"],
+["Vecinos Unidos","Social y Deportivo VGB"],
+["Atl. Huracán","Atlético Ascasubi"],
+["9 de Julio (Río Tercero)","Atl. Estudiantes"]
+],
+
+14: [
+["Atl. Estudiantes","Juventud Agrario"],
+["Atl. Huracán","9 de Julio (Río Tercero)"],
+["Vecinos Unidos","Atlético Ascasubi"],
+["Atlético Almafuerte","Social y Deportivo VGB"],
+["Belgrano Football","Talleres (Berrotarán)"],
+["Recreativo Elenense","Sp. Belgrano"],
+["Dep. Huracán (Tancacha)","Dep. Independiente"],
+["Atlético Río Tercero","Atl. Independiente"]
+],
+
+15: [
+["Atl. Independiente","Juventud Agrario"],
+["Dep. Independiente","Atlético Río Tercero"],
+["Sp. Belgrano","Dep. Huracán (Tancacha)"],
+["Belgrano Football","Recreativo Elenense"],
+["Social y Deportivo VGB","Talleres (Berrotarán)"],
+["Atlético Ascasubi","Atlético Almafuerte"],
+["9 de Julio (Río Tercero)","Vecinos Unidos"],
+["Atl. Estudiantes","Atl. Huracán"]
+],
+
+16: [
+["Atl. Huracán","Juventud Agrario"],
+["Vecinos Unidos","Atl. Estudiantes"],
+["Atlético Almafuerte","9 de Julio (Río Tercero)"],
+["Talleres (Berrotarán)","Atlético Ascasubi"],
+["Recreativo Elenense","Social y Deportivo VGB"],
+["Dep. Huracán (Tancacha)","Belgrano Football"],
+["Atlético Río Tercero","Sp. Belgrano"],
+["Atl. Independiente","Dep. Independiente"]
+]
+
+};
+
+
+/* =========================================================
    VARIABLES
 ========================================================= */
 
@@ -832,40 +1413,10 @@ let partidosActuales = [];
 
 
 /* =========================================================
-   MENU
-========================================================= */
-
-function toggleMenu() {
-
-    document
-        .getElementById("menuLateral")
-        .classList.toggle("abierto");
-
-    document
-        .getElementById("overlay")
-        .classList.toggle("visible");
-
-}
-
-
-function cerrarMenu() {
-
-    document
-        .getElementById("menuLateral")
-        .classList.remove("abierto");
-
-    document
-        .getElementById("overlay")
-        .classList.remove("visible");
-
-}
-
-
-/* =========================================================
    CAMBIAR CATEGORIA
 ========================================================= */
 
-async function cambiarCategoria(categoria) {
+function cambiarCategoria(categoria) {
 
     categoriaActual = categoria;
 
@@ -899,135 +1450,130 @@ async function cambiarCategoria(categoria) {
             : "Reserva";
 
 
-    document.getElementById("categoriaTabla")
+    document
+        .getElementById("categoriaTabla")
         .textContent = nombre;
 
-    document.getElementById("categoriaFixture")
+    document
+        .getElementById("categoriaFixture")
         .textContent = nombre;
 
-    document.getElementById("categoriaResultados")
+    document
+        .getElementById("categoriaResultados")
         .textContent = nombre;
 
+
+    mostrarFecha(fechaActual);
+
+    cargarTabla();
+
+    if (
+        document.getElementById("admin")
+            .style.display !== "none"
+    ) {
+
+        mostrarAdmin();
+
+    }
 
     cerrarMenu();
-
-
-    await cargarTodo();
 
 }
 
 
 /* =========================================================
-   NAVEGACION
+   MENU
+========================================================= */
+
+function toggleMenu() {
+
+    document
+        .getElementById("menuLateral")
+        .classList.toggle("abierto");
+
+    document
+        .getElementById("overlay")
+        .classList.toggle("visible");
+
+}
+
+
+function cerrarMenu() {
+
+    document
+        .getElementById("menuLateral")
+        .classList.remove("abierto");
+
+    document
+        .getElementById("overlay")
+        .classList.remove("visible");
+
+}
+
+
+/* =========================================================
+   SECCIONES
 ========================================================= */
 
 function mostrarSeccion(seccion) {
 
-    document.getElementById("tabla").style.display = "none";
+    const secciones = [
+        "tabla",
+        "fixture",
+        "resultados",
+        "admin"
+    ];
 
-    document.getElementById("fixture").style.display = "none";
-
-    document.getElementById("resultados").style.display = "none";
-
-
-    document.getElementById(seccion).style.display = "block";
-
-
-    document
-        .getElementById("btnTabla")
-        .classList.remove("active");
-
-    document
-        .getElementById("btnFixture")
-        .classList.remove("active");
-
-    document
-        .getElementById("btnResultados")
-        .classList.remove("active");
-
-
-    if (seccion === "tabla") {
+    secciones.forEach(id => {
 
         document
-            .getElementById("btnTabla")
-            .classList.add("active");
+            .getElementById(id)
+            .style.display =
+                "none";
 
-    }
+    });
 
 
-    if (seccion === "fixture") {
+    document
+        .getElementById(seccion)
+        .style.display =
+            "block";
 
-        document
-            .getElementById("btnFixture")
-            .classList.add("active");
+
+    document
+        .querySelectorAll("nav button")
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+
+    const boton =
+        document.getElementById(
+            "btn" +
+            seccion.charAt(0).toUpperCase() +
+            seccion.slice(1)
+        );
+
+
+    if (boton) {
+
+        boton.classList.add("active");
 
     }
 
 
     if (seccion === "resultados") {
 
-        document
-            .getElementById("btnResultados")
-            .classList.add("active");
-
-    }
-
-}
-
-
-/* =========================================================
-   CARGAR TODO
-========================================================= */
-
-async function cargarTodo() {
-
-    await cargarPartidos();
-
-    crearSelectorFechas();
-
-    crearSelectorAdmin();
-
-    await mostrarFecha(fechaActual);
-
-    await mostrarAdmin();
-
-    actualizarTabla();
-
-}
-
-
-/* =========================================================
-   CARGAR PARTIDOS DE SUPABASE
-========================================================= */
-
-async function cargarPartidos() {
-
-    const { data, error } =
-        await supabaseClient
-            .from("partidos")
-            .select("*")
-            .eq("categoria", categoriaActual)
-            .order("fecha", { ascending: true })
-            .order("id", { ascending: true });
-
-
-    if (error) {
-
-        console.error(error);
-
-        mostrarError(
-            "No se pudieron cargar los partidos: " +
-            error.message
-        );
-
-        partidosActuales = [];
-
-        return;
+        mostrarResultadosPublicos();
 
     }
 
 
-    partidosActuales = data || [];
+    if (seccion === "admin") {
+
+        comprobarSesion();
+
+    }
 
 }
 
@@ -1039,8 +1585,9 @@ async function cargarPartidos() {
 function crearSelectorFechas() {
 
     const contenedor =
-        document.getElementById("selectorFechas");
-
+        document.getElementById(
+            "selectorFechas"
+        );
 
     contenedor.innerHTML = "";
 
@@ -1060,14 +1607,10 @@ function crearSelectorFechas() {
 
 
         boton.onclick =
-            function() {
-
-                mostrarFecha(fecha);
-
-            };
+            () => mostrarFecha(fecha);
 
 
-        if (fecha === fechaActual) {
+        if (fecha === 1) {
 
             boton.classList.add("active");
 
@@ -1082,6 +1625,51 @@ function crearSelectorFechas() {
 
 
 /* =========================================================
+   CARGAR PARTIDOS DE SUPABASE
+========================================================= */
+
+async function obtenerPartidos(fecha) {
+
+    const { data, error } =
+        await supabaseClient
+
+            .from("partidos")
+
+            .select("*")
+
+            .eq(
+                "fecha",
+                fecha
+            )
+
+            .eq(
+                "categoria",
+                categoriaActual
+            )
+
+            .order(
+                "id",
+                {
+                    ascending: true
+                }
+            );
+
+
+    if (error) {
+
+        console.error(error);
+
+        return [];
+
+    }
+
+
+    return data || [];
+
+}
+
+
+/* =========================================================
    MOSTRAR FECHA
 ========================================================= */
 
@@ -1090,69 +1678,81 @@ async function mostrarFecha(fecha) {
     fechaActual = fecha;
 
 
+    const contenedor =
+        document.getElementById(
+            "partidos"
+        );
+
+
+    contenedor.innerHTML =
+        "<p>⏳ Cargando partidos...</p>";
+
+
     document
         .querySelectorAll(
             "#selectorFechas button"
         )
         .forEach(
             boton =>
-                boton.classList.remove("active")
+                boton.classList.remove(
+                    "active"
+                )
         );
 
 
-    const boton =
-        document.querySelectorAll(
-            "#selectorFechas button"
-        )[fecha - 1];
+    const botonFecha =
+        document
+            .querySelectorAll(
+                "#selectorFechas button"
+            )[fecha - 1];
 
 
-    if (boton) {
+    if (botonFecha) {
 
-        boton.classList.add("active");
+        botonFecha.classList.add(
+            "active"
+        );
 
     }
 
 
-    const contenedor =
-        document.getElementById("partidos");
+    partidosActuales =
+        await obtenerPartidos(fecha);
 
 
-    contenedor.innerHTML =
-        "<p>Cargando partidos...</p>";
-
-
-    const partidosFecha =
-        partidosActuales.filter(
-            partido =>
-                Number(partido.fecha) ===
-                Number(fecha)
-        );
+    contenedor.innerHTML = "";
 
 
     if (
-        partidosFecha.length === 0
+        partidosActuales.length === 0
     ) {
 
-        contenedor.innerHTML =
-            "<div class='mensaje'>No hay partidos cargados para esta fecha.</div>";
+        contenedor.innerHTML = `
+
+            <p>
+                No hay partidos cargados
+                para esta fecha en
+                ${categoriaActual}.
+            </p>
+
+        `;
 
         return;
 
     }
 
 
-    contenedor.innerHTML = "";
+    partidosActuales.forEach(
+        partido => {
 
-
-    partidosFecha.forEach(
-        (partido, indice) => {
-
-            const finalizado =
-                partido.estado === "finalizado" ||
-                (
-                    partido.goles_local !== null &&
-                    partido.goles_visitante !== null
+            const div =
+                document.createElement(
+                    "div"
                 );
+
+
+            div.className =
+                "partido";
 
 
             let marcador = "-";
@@ -1162,7 +1762,10 @@ async function mostrarFecha(fecha) {
             let claseEstado = "";
 
 
-            if (finalizado) {
+            if (
+                partido.goles_local !== null &&
+                partido.goles_visitante !== null
+            ) {
 
                 marcador =
                     partido.goles_local +
@@ -1178,8 +1781,153 @@ async function mostrarFecha(fecha) {
             }
 
 
+            let horario = "";
+
+
+            if (partido.horario) {
+
+                const fechaHora =
+                    new Date(
+                        partido.horario
+                    );
+
+
+                horario =
+
+                    fechaHora.toLocaleString(
+                        "es-AR",
+                        {
+                            dateStyle:
+                                "short",
+
+                            timeStyle:
+                                "short"
+                        }
+                    );
+
+            }
+
+
+            div.innerHTML = `
+
+                <div class="partido-header">
+
+                    <strong>
+                        ${partido.local}
+                        vs
+                        ${partido.visitante}
+                    </strong>
+
+                    <span
+                        class="estado ${claseEstado}">
+                        ${estado}
+                    </span>
+
+                </div>
+
+
+                <div class="equipos">
+
+                    <div class="equipo local">
+
+                        ${partido.local}
+
+                    </div>
+
+
+                    <div class="resultado">
+
+                        ${marcador}
+
+                    </div>
+
+
+                    <div class="equipo visitante">
+
+                        ${partido.visitante}
+
+                    </div>
+
+                </div>
+
+
+                ${
+                    horario
+                        ? `
+                            <div class="horario">
+                                🕐 ${horario}
+                            </div>
+                          `
+                        : ""
+                }
+
+            `;
+
+
+            contenedor.appendChild(div);
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   RESULTADOS PUBLICOS
+========================================================= */
+
+async function mostrarResultadosPublicos() {
+
+    const contenedor =
+        document.getElementById(
+            "resultadosPublicos"
+        );
+
+
+    contenedor.innerHTML =
+        "<p>⏳ Cargando resultados...</p>";
+
+
+    const partidos =
+        await obtenerPartidos(
+            fechaActual
+        );
+
+
+    contenedor.innerHTML = "";
+
+
+    partidos.forEach(
+        partido => {
+
+            let marcador =
+                "Pendiente";
+
+
+            let estado =
+                "Pendiente";
+
+
+            if (
+                partido.goles_local !== null &&
+                partido.goles_visitante !== null
+            ) {
+
+                marcador =
+                    `${partido.goles_local}
+                    -
+                    ${partido.goles_visitante}`;
+
+                estado =
+                    "Finalizado";
+
+            }
+
+
             const div =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             div.className =
@@ -1191,27 +1939,44 @@ async function mostrarFecha(fecha) {
                 <div class="partido-header">
 
                     <strong>
-                        Partido ${indice + 1}
+
+                        ${partido.local}
+
+                        vs
+
+                        ${partido.visitante}
+
                     </strong>
 
-                    <span class="estado ${claseEstado}">
+                    <span class="estado">
+
                         ${estado}
+
                     </span>
 
                 </div>
 
+
                 <div class="equipos">
 
                     <div class="equipo local">
+
                         ${partido.local}
+
                     </div>
+
 
                     <div class="resultado">
+
                         ${marcador}
+
                     </div>
+
 
                     <div class="equipo visitante">
+
                         ${partido.visitante}
+
                     </div>
 
                 </div>
@@ -1228,307 +1993,74 @@ async function mostrarFecha(fecha) {
 
 
 /* =========================================================
-   SELECTOR ADMIN
+   TABLA
 ========================================================= */
 
-function crearSelectorAdmin() {
+async function cargarTabla() {
 
-    const select =
-        document.getElementById("fechaAdmin");
-
-
-    const fechaSeleccionada =
-        select.value || fechaActual;
-
-
-    select.innerHTML = "";
-
-
-    for (
-        let fecha = 1;
-        fecha <= 16;
-        fecha++
-    ) {
-
-        const option =
-            document.createElement("option");
-
-
-        option.value =
-            fecha;
-
-
-        option.textContent =
-            "Fecha " + fecha;
-
-
-        if (
-            Number(fechaSeleccionada) ===
-            fecha
-        ) {
-
-            option.selected = true;
-
-        }
-
-
-        select.appendChild(option);
-
-    }
-
-}
-
-
-/* =========================================================
-   MOSTRAR ADMIN
-========================================================= */
-
-async function mostrarAdmin() {
-
-    const select =
-        document.getElementById("fechaAdmin");
-
-
-    const fecha =
-        Number(select.value || 1);
-
-
-    const contenedor =
+    const tbody =
         document.getElementById(
-            "adminPartidos"
+            "tablaPosiciones"
         );
 
 
-    contenedor.innerHTML =
-        "<p>Cargando partidos...</p>";
+    tbody.innerHTML = `
+
+        <tr>
+
+            <td colspan="10">
+
+                ⏳ Cargando tabla...
+
+            </td>
+
+        </tr>
+
+    `;
 
 
-    const partidosFecha =
-        partidosActuales.filter(
-            partido =>
-                Number(partido.fecha) ===
-                fecha
-        );
-
-
-    if (
-        partidosFecha.length === 0
-    ) {
-
-        contenedor.innerHTML =
-            "<div class='mensaje'>No hay partidos cargados para esta fecha.</div>";
-
-        return;
-
-    }
-
-
-    contenedor.innerHTML = "";
-
-
-    partidosFecha.forEach(
-        partido => {
-
-            const div =
-                document.createElement("div");
-
-
-            div.className =
-                "admin-partido";
-
-
-            const golesLocal =
-                partido.goles_local !== null
-                    ? partido.goles_local
-                    : "";
-
-
-            const golesVisitante =
-                partido.goles_visitante !== null
-                    ? partido.goles_visitante
-                    : "";
-
-
-            div.innerHTML = `
-
-                <div class="admin-equipo">
-                    ${partido.local}
-                </div>
-
-                <input
-                    type="number"
-                    min="0"
-                    id="local-${partido.id}"
-                    value="${golesLocal}"
-                    placeholder="0"
-                >
-
-                <strong>-</strong>
-
-                <input
-                    type="number"
-                    min="0"
-                    id="visitante-${partido.id}"
-                    value="${golesVisitante}"
-                    placeholder="0"
-                >
-
-                <div class="admin-equipo">
-                    ${partido.visitante}
-                </div>
-
-                <button
-                    onclick="guardarResultado(${partido.id})">
-
-                    Guardar
-
-                </button>
-
-            `;
-
-
-            contenedor.appendChild(div);
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   GUARDAR RESULTADO
-========================================================= */
-
-async function guardarResultado(id) {
-
-    const inputLocal =
-        document.getElementById(
-            "local-" + id
-        );
-
-
-    const inputVisitante =
-        document.getElementById(
-            "visitante-" + id
-        );
-
-
-    const golesLocal =
-        inputLocal.value;
-
-
-    const golesVisitante =
-        inputVisitante.value;
-
-
-    if (
-        golesLocal === "" ||
-        golesVisitante === ""
-    ) {
-
-        alert(
-            "Completá los dos resultados."
-        );
-
-        return;
-
-    }
-
-
-    const boton =
-        event.target;
-
-
-    boton.disabled = true;
-
-    boton.textContent =
-        "Guardando...";
-
-
-    const { data, error } =
+    const {
+        data,
+        error
+    } =
         await supabaseClient
+
             .from("partidos")
-            .update({
 
-                goles_local:
-                    Number(golesLocal),
+            .select(
+                "local, visitante, goles_local, goles_visitante"
+            )
 
-                goles_visitante:
-                    Number(golesVisitante),
-
-                estado:
-                    "finalizado",
-
-                updated_at:
-                    new Date().toISOString()
-
-            })
-            .eq("id", id)
-            .select()
-            .single();
+            .eq(
+                "categoria",
+                categoriaActual
+            );
 
 
     if (error) {
 
         console.error(error);
 
-        alert(
-            "Error al guardar: " +
-            error.message
-        );
+        tbody.innerHTML = `
 
-        boton.disabled = false;
+            <tr>
 
-        boton.textContent =
-            "Guardar";
+                <td colspan="10">
+
+                    Error cargando la tabla.
+
+                </td>
+
+            </tr>
+
+        `;
 
         return;
 
     }
 
 
-    const indice =
-        partidosActuales.findIndex(
-            partido =>
-                partido.id === id
-        );
-
-
-    if (indice !== -1) {
-
-        partidosActuales[indice] =
-            data;
-
-    }
-
-
-    alert(
-        "Resultado guardado correctamente."
-    );
-
-
-    boton.disabled = false;
-
-    boton.textContent =
-        "Guardar";
-
-
-    await mostrarFecha(fechaActual);
-
-    await mostrarAdmin();
-
-    actualizarTabla();
-
-}
-
-
-/* =========================================================
-   TABLA DE POSICIONES
-========================================================= */
-
-function actualizarTabla() {
-
-    const tabla = {};
+    let tabla = {};
 
 
     equipos.forEach(
@@ -1536,7 +2068,7 @@ function actualizarTabla() {
 
             tabla[equipo] = {
 
-                equipo: equipo,
+                equipo,
 
                 pts: 0,
 
@@ -1560,7 +2092,7 @@ function actualizarTabla() {
     );
 
 
-    partidosActuales.forEach(
+    (data || []).forEach(
         partido => {
 
             if (
@@ -1576,18 +2108,16 @@ function actualizarTabla() {
             const local =
                 partido.local;
 
-
             const visitante =
                 partido.visitante;
 
 
-            const golesLocal =
+            const gl =
                 Number(
                     partido.goles_local
                 );
 
-
-            const golesVisitante =
+            const gv =
                 Number(
                     partido.goles_visitante
                 );
@@ -1608,24 +2138,17 @@ function actualizarTabla() {
             tabla[visitante].pj++;
 
 
-            tabla[local].gf +=
-                golesLocal;
+            tabla[local].gf += gl;
 
-            tabla[local].gc +=
-                golesVisitante;
+            tabla[local].gc += gv;
 
 
-            tabla[visitante].gf +=
-                golesVisitante;
+            tabla[visitante].gf += gv;
 
-            tabla[visitante].gc +=
-                golesLocal;
+            tabla[visitante].gc += gl;
 
 
-            if (
-                golesLocal >
-                golesVisitante
-            ) {
+            if (gl > gv) {
 
                 tabla[local].pg++;
 
@@ -1635,10 +2158,7 @@ function actualizarTabla() {
 
             }
 
-            else if (
-                golesLocal <
-                golesVisitante
-            ) {
+            else if (gl < gv) {
 
                 tabla[visitante].pg++;
 
@@ -1679,14 +2199,16 @@ function actualizarTabla() {
     const posiciones =
         Object.values(tabla)
             .sort(
-                (a, b) => {
+                (a,b) => {
 
                     if (
                         b.pts !== a.pts
                     ) {
 
-                        return b.pts -
-                               a.pts;
+                        return (
+                            b.pts -
+                            a.pts
+                        );
 
                     }
 
@@ -1695,8 +2217,10 @@ function actualizarTabla() {
                         b.dg !== a.dg
                     ) {
 
-                        return b.dg -
-                               a.dg;
+                        return (
+                            b.dg -
+                            a.dg
+                        );
 
                     }
 
@@ -1705,24 +2229,21 @@ function actualizarTabla() {
                         b.gf !== a.gf
                     ) {
 
-                        return b.gf -
-                               a.gf;
+                        return (
+                            b.gf -
+                            a.gf
+                        );
 
                     }
 
 
-                    return a.equipo.localeCompare(
-                        b.equipo
-                    );
+                    return a.equipo
+                        .localeCompare(
+                            b.equipo
+                        );
 
                 }
             );
-
-
-    const tbody =
-        document.getElementById(
-            "tablaPosiciones"
-        );
 
 
     tbody.innerHTML = "";
@@ -1732,24 +2253,37 @@ function actualizarTabla() {
         (equipo, indice) => {
 
             const tr =
-                document.createElement("tr");
+                document.createElement(
+                    "tr"
+                );
 
 
             tr.innerHTML = `
 
                 <td class="posicion">
+
                     ${indice + 1}
+
                 </td>
 
+
                 <td>
+
                     ${equipo.equipo}
+
                 </td>
 
+
                 <td>
+
                     <strong>
+
                         ${equipo.pts}
+
                     </strong>
+
                 </td>
+
 
                 <td>${equipo.pj}</td>
 
@@ -1777,52 +2311,573 @@ function actualizarTabla() {
 
 
 /* =========================================================
-   MENSAJE ERROR
+   SELECTOR ADMIN
 ========================================================= */
 
-function mostrarError(mensaje) {
+function crearSelectorAdmin() {
 
-    const elemento =
+    const select =
         document.getElementById(
-            "mensajeTabla"
+            "fechaAdmin"
         );
 
 
-    elemento.innerHTML = `
+    select.innerHTML = "";
 
-        <div class="mensaje error">
-            ${mensaje}
-        </div>
 
-    `;
+    for (
+        let fecha = 1;
+        fecha <= 16;
+        fecha++
+    ) {
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+
+        option.value =
+            fecha;
+
+        option.textContent =
+            "Fecha " + fecha;
+
+
+        select.appendChild(
+            option
+        );
+
+    }
 
 }
 
 
 /* =========================================================
-   INICIAR
+   SESION
 ========================================================= */
 
-async function iniciar() {
+async function comprobarSesion() {
 
-    mostrarSeccion("tabla");
+    const {
+        data
+    } =
+        await supabaseClient
+            .auth
+            .getSession();
 
-    crearSelectorFechas();
 
-    crearSelectorAdmin();
+    if (
+        data &&
+        data.session
+    ) {
 
-    await cargarTodo();
+        mostrarAdminLogueado(
+            data.session
+        );
+
+    } else {
+
+        mostrarLogin();
+
+    }
 
 }
 
 
 /* =========================================================
-   EJECUTAR
+   MOSTRAR LOGIN
 ========================================================= */
 
-iniciar();
+function mostrarLogin() {
+
+    document
+        .getElementById(
+            "loginContainer"
+        )
+        .style.display =
+            "block";
+
+
+    document
+        .getElementById(
+            "adminContainer"
+        )
+        .style.display =
+            "none";
+
+}
+
+
+/* =========================================================
+   MOSTRAR ADMIN LOGUEADO
+========================================================= */
+
+function mostrarAdminLogueado(
+    session
+) {
+
+    document
+        .getElementById(
+            "loginContainer"
+        )
+        .style.display =
+            "none";
+
+
+    document
+        .getElementById(
+            "adminContainer"
+        )
+        .style.display =
+            "block";
+
+
+    document
+        .getElementById(
+            "usuarioActual"
+        )
+        .textContent =
+            "👤 Sesión iniciada: " +
+            session.user.email;
+
+
+    mostrarAdmin();
+
+}
+
+
+/* =========================================================
+   INICIAR SESION
+========================================================= */
+
+async function iniciarSesion() {
+
+    const email =
+        document
+            .getElementById(
+                "emailLogin"
+            )
+            .value
+            .trim();
+
+
+    const password =
+        document
+            .getElementById(
+                "passwordLogin"
+            )
+            .value;
+
+
+    const mensaje =
+        document
+            .getElementById(
+                "mensajeLogin"
+            );
+
+
+    mensaje.className =
+        "mensaje";
+
+
+    if (
+        !email ||
+        !password
+    ) {
+
+        mensaje.textContent =
+            "Completá email y contraseña.";
+
+        mensaje.classList.add(
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .auth
+            .signInWithPassword({
+
+                email,
+
+                password
+
+            });
+
+
+    if (error) {
+
+        console.error(error);
+
+        mensaje.textContent =
+            "Email o contraseña incorrectos.";
+
+        mensaje.classList.add(
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    mensaje.textContent =
+        "Sesión iniciada correctamente.";
+
+    mensaje.classList.add(
+        "exito"
+    );
+
+
+    mostrarAdminLogueado(
+        data.session
+    );
+
+}
+
+
+/* =========================================================
+   CERRAR SESION
+========================================================= */
+
+async function cerrarSesion() {
+
+    await supabaseClient
+        .auth
+        .signOut();
+
+
+    mostrarLogin();
+
+}
+
+
+/* =========================================================
+   MOSTRAR ADMIN
+========================================================= */
+
+async function mostrarAdmin() {
+
+    const {
+        data
+    } =
+        await supabaseClient
+            .auth
+            .getSession();
+
+
+    if (
+        !data ||
+        !data.session
+    ) {
+
+        mostrarLogin();
+
+        return;
+
+    }
+
+
+    const fecha =
+        Number(
+            document
+                .getElementById(
+                    "fechaAdmin"
+                )
+                .value
+        );
+
+
+    const contenedor =
+        document.getElementById(
+            "adminPartidos"
+        );
+
+
+    contenedor.innerHTML =
+        "<p>⏳ Cargando...</p>";
+
+
+    const partidos =
+        await obtenerPartidos(
+            fecha
+        );
+
+
+    contenedor.innerHTML = "";
+
+
+    if (
+        partidos.length === 0
+    ) {
+
+        contenedor.innerHTML =
+            "<p>No hay partidos cargados.</p>";
+
+        return;
+
+    }
+
+
+    partidos.forEach(
+        partido => {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+
+            div.className =
+                "admin-partido";
+
+
+            div.innerHTML = `
+
+                <div class="admin-equipo">
+
+                    ${partido.local}
+
+                </div>
+
+
+                <input
+                    type="number"
+                    min="0"
+                    id="local-${partido.id}"
+                    value="${
+                        partido.goles_local ??
+                        ""
+                    }"
+                    placeholder="0"
+                >
+
+
+                <strong>-</strong>
+
+
+                <input
+                    type="number"
+                    min="0"
+                    id="visitante-${partido.id}"
+                    value="${
+                        partido.goles_visitante ??
+                        ""
+                    }"
+                    placeholder="0"
+                >
+
+
+                <div class="admin-equipo">
+
+                    ${partido.visitante}
+
+                </div>
+
+
+                <button
+                    onclick="guardarResultado(
+                        ${partido.id}
+                    )">
+
+                    Guardar
+
+                </button>
+
+            `;
+
+
+            contenedor.appendChild(
+                div
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   GUARDAR RESULTADO
+========================================================= */
+
+async function guardarResultado(
+    id
+) {
+
+    const {
+        data: sessionData
+    } =
+        await supabaseClient
+            .auth
+            .getSession();
+
+
+    if (
+        !sessionData ||
+        !sessionData.session
+    ) {
+
+        alert(
+            "Tenés que iniciar sesión."
+        );
+
+        return;
+
+    }
+
+
+    const golesLocal =
+        document
+            .getElementById(
+                "local-" + id
+            )
+            .value;
+
+
+    const golesVisitante =
+        document
+            .getElementById(
+                "visitante-" + id
+            )
+            .value;
+
+
+    if (
+        golesLocal === "" ||
+        golesVisitante === ""
+    ) {
+
+        alert(
+            "Completá los dos resultados."
+        );
+
+        return;
+
+    }
+
+
+    const {
+        error
+    } =
+        await supabaseClient
+
+            .from("partidos")
+
+            .update({
+
+                goles_local:
+                    Number(
+                        golesLocal
+                    ),
+
+                goles_visitante:
+                    Number(
+                        golesVisitante
+                    ),
+
+                estado:
+                    "finalizado",
+
+                updated_at:
+                    new Date()
+                        .toISOString()
+
+            })
+
+            .eq(
+                "id",
+                id
+            );
+
+
+    if (error) {
+
+        console.error(error);
+
+        alert(
+            "No se pudo guardar el resultado."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "✅ Resultado guardado correctamente."
+    );
+
+
+    await mostrarAdmin();
+
+    await mostrarFecha(
+        fechaActual
+    );
+
+    await cargarTabla();
+
+    await mostrarResultadosPublicos();
+
+}
+
+
+/* =========================================================
+   ESCUCHAR CAMBIOS DE SESION
+========================================================= */
+
+supabaseClient
+    .auth
+    .onAuthStateChange(
+        (
+            event,
+            session
+        ) => {
+
+            if (
+                session
+            ) {
+
+                mostrarAdminLogueado(
+                    session
+                );
+
+            } else {
+
+                mostrarLogin();
+
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   INICIALIZAR
+========================================================= */
+
+crearSelectorFechas();
+
+crearSelectorAdmin();
+
+mostrarFecha(1);
+
+cargarTabla();
+
+mostrarSeccion(
+    "tabla"
+);
 
 </script>
 
 </body>
+
 </html>
